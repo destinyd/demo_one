@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>名称</th>
+    <th>种类</th>
+    <th>等级</th>
+    <th>剩余</th>
+    <th>用量</th>
+  </tr>
+  <%= render :partial => 'item',:collection => items %>
+</table>
+<button onclick='add_materials()'>添加材料</button>
+<table id='makes_list'>
+</table>
+<form action='/makes' METHOD='POST' id='makes'>
+  <input type='submit' id='start_makes' disabled='disabled' value='开始合成' style='display:none' />
+</form>

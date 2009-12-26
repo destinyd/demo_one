@@ -1,0 +1,17 @@
+if @end
+  page[:btn_submit].value="战斗结束"
+else
+  page.delay(3) do
+    page[:btn_submit].enable
+  end
+end
+page.replace_html :fnotice, flash[:notice]
+page.insert_html :top, :fstatus,@output
+page.visual_effect :highlight,:fstatus
+if @s
+  page.replace_html :lnoonce,:partial => "fight",:object => @s
+end
+if @t
+  page.replace_html :rnoonce,:partial => "fight",:object => @t
+end
+flash.discard

@@ -1,0 +1,5 @@
+<%=@content_for_layout%>
+<% if flash[:notice] %>
+  $.notice("<%= h flash[:notice] %>");
+  <%flash.discard%>
+<% end %>

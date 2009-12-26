@@ -1,0 +1,2 @@
+class Clothes < Armor
+end

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sword_id: 1
+  name: MyString
+  hp: 1
+
+two:
+  sword_id: 1
+  name: MyString
+  hp: 1

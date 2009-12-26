@@ -1,0 +1,3 @@
+page<<"alert('聊天内容长度必须为1-80字')" if @ddchat.id.nil?
+page.insert_html :top, :ddchat_show, :partial => 'ddchats/chat',:collection => @ddchats unless @ddchats.blank?
+page[:new_ddchat].reset

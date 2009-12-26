@@ -1,0 +1,18 @@
+<% if @partys.blank? %>
+  暂时无队伍，你可以自己创建一个。
+<%else%>
+<%= form_tag :action => :join_party%>
+选择个队伍加入： <br />
+<select name="party_id">
+ <%= options_for_select @partys  %>
+</select><br />
+<%= submit_tag "加入" %>
+</form>
+<%end%>
+<br /><br />
+创建一个队伍 <br />
+<%= form_tag :action => :create_party%>
+队伍名称：
+<%= text_field_tag :name  %>
+<%= submit_tag "创建" %>
+</form>

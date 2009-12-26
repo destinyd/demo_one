@@ -1,0 +1,14 @@
+<div id="status">
+  <ol>
+    <%=
+    if @statuses.blank?
+      "暂无资料!"
+    else
+      render :partial => 'status',:collection => @statuses
+    end
+  %>
+  </ol>
+</div>
+<div style="float:right;margin-right:200px">
+  <%= will_paginate @statuses, :page_links => false ,:prev_label => '上一页',:next_label => '下一页'  %>
+</div>

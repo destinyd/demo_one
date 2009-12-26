@@ -1,0 +1,19 @@
+<% form_for(@mail) do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label "发送给" %><br />
+    <%= f.text_field :to_name %>
+  </p>
+  <p>
+    <%= f.label "标题" %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label "消息内容" %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit "提交" %>
+  </p>
+<% end %>
+<%= link_to '后退', mails_path %>

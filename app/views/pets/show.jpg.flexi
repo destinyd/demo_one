@@ -1,0 +1,6 @@
+@pet.operate do |image|
+  image.resize '220x220' , :crop => true
+  image.unsharp_mask
+  image.shadow
+end
+

@@ -1,0 +1,7 @@
+<tr class='item'>
+  <td id='item<%=item.id%>_name'><%= item.name %></td>
+  <td><%= item.class.human_name %></td>
+  <td><%= item.level %></td>
+  <td id='item<%=item.id%>_amount'><%= item.amount %></td>
+  <td><input type='text' id='item<%=item.id%>_use' class='use_amount' name='<%= item.id %>' /></td>
+</tr>

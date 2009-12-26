@@ -1,0 +1,5 @@
+if @pet.blank?
+  page<<"合成失败"
+else
+  page.call 'location.reload'
+end

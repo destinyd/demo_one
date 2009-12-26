@@ -1,0 +1,42 @@
+#swleft.l
+  #llabel 自己状态
+  #sstatus
+    #lonce
+      =render :partial => "fightonce",:object => @s
+    #lnoonce
+      =render :partial => "fight",:object => @s
+  %br
+  %br
+  #cselect
+    =javascript_include_tag :defaults
+    -form_remote_tag :url => {:action => :pfight},:method => :put,:html => {:id => "fightform"} do
+      攻击方式：
+      %br
+      <select name="pa" id="pa">
+      <option value='0'>横斩</option>
+      <option value='1'>重劈</option>
+      <option value='2'>直刺</option>
+      -@skills.each do |skill|
+        ="<option value='#{skill.id}'>#{skill.name}</option>"
+      </select>
+      %br
+      回避方式：
+      %br
+      <select name="pb" id="pb">
+      <option value="0">下蹲</option>
+      <option value="1">突进</option>
+      <option value="2">侧身</option>
+      </select>
+      %br
+      =submit_tag "行动确定",:id => "btn_submit",:onclick =>  "$('fightform').onsubmit();this.disabled='disabled';return false"
+#swmid.l
+  #flabel 战斗状态
+  #fstatus
+  #fnotice=flash[:notice]
+#swright.l 
+  #rlabel 对手状态
+  #tstatus
+    #ronce
+      =render :partial => "fightonce",:object => @t
+    #rnoonce
+      =render :partial => "fight",:object => @t

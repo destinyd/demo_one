@@ -1,0 +1,11 @@
+if @end.nil?
+  page.delay(3) do
+    page[:btn_submit].enable
+  end
+end
+page.replace_html :notice, flash[:notice]
+flash.discard
+page.insert_html :top, :fstatus,@outtmp
+page.visual_effect :highlight,:fstatus
+page.replace_html :sstatus,:partial => "selfstatus",:object => @status
+page.replace_html :tstatus,:partial => "selftstatus",:object => @status

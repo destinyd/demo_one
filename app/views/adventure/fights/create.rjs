@@ -1,0 +1,18 @@
+page.replace_html :fnotice,flash[:notice] if flash[:notice] || session[:round]!=@infos[:round]
+if session[:round] != @infos[:round]
+  page.insert_html :bottom, :fstatus, @infos[:output]
+  page << "fstatus_scroll()"
+  page[:submit].hide if @infos[:over]
+  page.replace_html "once#{@infos[:self][:adventurer_id]}#{@infos[:self][:side]}",
+    :partial => "adventure/oncestatus", :object =>  @infos[:self]
+  page.replace_html "once#{@infos[:enemy][0][:adventurer_id]}#{@infos[:enemy][0][:side]}",
+    :partial => "adventure/oncestatus", :object =>  @infos[:enemy][0]
+  page[:back].show if @infos[:over]
+  session[:round]=@infos[:round]
+end
+page.replace_html :scene, :partial => 'adventure/scene' , :object => @infos
+page.replace_html "var#{@infos[:self][:adventurer_id]}#{@infos[:self][:side]}",
+  :partial => "adventure/varstatus", :object =>  @infos[:self]
+page.replace_html "var#{@infos[:enemy][0][:adventurer_id]}#{@infos[:enemy][0][:side]}",
+  :partial => "adventure/varstatus", :object =>  @infos[:enemy][0]
+flash.discard

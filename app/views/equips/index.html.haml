@@ -1,0 +1,46 @@
+-sellurl={:controller => :shops,:action => :new,:item => {:type => 'equip'}}
+-unless @equip.blank?
+  %p 装备着的装备
+  %table
+    %tr
+      %th 名称
+      %th 等级
+      %th 种类
+      %th 操作
+    -@equip.each do |list|
+      %tr
+        -unless list.isnamed
+          %td
+            =link_to h(list.name),edit_equip_path(list.id),:alt=>"给此物品命名"
+        -else
+          %td=h(list.name)
+        %td=list.level
+        %td=@ietype[list.ctype]
+        %td=link_to "卸下",{:action => :destroy,:id => list.id},:method => :delete
+%table
+  %tr
+    %th 名称
+    %th 数量
+    %th 等级
+    %th 种类
+    %th 锁定
+    %th 操作
+  -@list.each do |list|
+    %tr
+      -unless list.equip.isnamed
+        %td
+          =link_to h(list.equip.name),edit_equip_path(list.equip_id)
+      -else
+        %td=h(list.equip.name)
+      %td=list.num
+      %td=list.equip.level
+      %td=@ietype[list.equip.ctype]
+      %td=list.islock
+      %td=link_to "装备",{:action => :create,:id => list.id,:ctype => list.equip.ctype},:method => :post
+      %td=link_to "分解",{:controller => :makes,:action => :destroy,:id => list.id},:method => :delete
+      %td
+        =link_to "鉴定",{:controller => :identifies,:item => {:item_type => 'equip',:item_id => list.equip.id}}
+        -if list.islock==0
+          =link_to "摆摊",{:controller => :shops,:action => :new,:item => {:type => 'equip',:id => list.equip.id}}
+          =link_to "拍卖",{:controller => :auctions,:action => :new,:item => {:type => 'equip',:id => list.equip.id}}
+= will_paginate @list,:prev_label => "&lt;&lt;",:next_label => '&gt;&gt;',:separator => ' | '

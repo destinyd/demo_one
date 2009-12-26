@@ -1,0 +1,12 @@
+<% form_for @item,:url => item_path(@item), :method => :put  do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label "名称" %><br />
+    <%= text_field_tag "item[name]",@item.name %>
+  </p>
+  <p>
+    <%= f.submit "修改" %>
+  </p>
+<% end %>
+
+<%= link_to '返回', items_path %>

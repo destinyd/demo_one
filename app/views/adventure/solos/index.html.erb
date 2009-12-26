@@ -1,0 +1,29 @@
+<div id="swleft" class="l">
+  <div id="self">
+    <%=render :partial => 'adventure/status' , :object => @infos[:self] %>
+  </div>
+  <div id="action">
+    <%= form_remote_tag :url => adventure_solos_path %>
+    <%=submit_tag "行动",:id => "submit" %>
+    </form>
+  </div>
+  <%= link_to "返回",adventure_adventures_path,:style => "display:none",:id => "back" %>
+</div>
+<div id="swmid" class="l">
+  <div id="fstatus"></div>
+  <div id="fnotice"></div>
+</div>
+
+<%#*<div id="teammate">%>
+<%#=render :partial => 'status' , :collection => @infos[:teammate] %>
+<%#*</div>%>
+<div id="swright" class="l">
+  <div id="enemy">
+    <%=render :partial => 'adventure/status' , :object => @infos[:enemy][0] %>
+  </div>
+</div>
+<script>
+  function fstatus_scroll(){
+    $('#fstatus')[0].scrollTop = 10000000000000;$('#fstatus')[0].scrollTop += 100000;
+  }
+</script>

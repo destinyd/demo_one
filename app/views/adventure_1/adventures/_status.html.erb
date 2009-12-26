@@ -1,0 +1,9 @@
+<div class="constant" id="<%= "constant#{status[:adventurer_id]}#{status[:side]}" %>">
+  <%=render :partial => 'constatus' , :object => status %>
+</div>
+<div class="var" id="<%= "var#{status[:adventurer_id]}#{status[:side]}" %>">
+  <%=render :partial => 'varstatus' , :object => status %>
+</div>
+<div class="once" id="<%= "once#{status[:adventurer_id]}#{status[:side]}" %>">
+  <%=render :partial => 'oncestatus' , :object => status %>
+</div>

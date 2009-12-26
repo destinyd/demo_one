@@ -1,0 +1,28 @@
+<%if @feedbacks.blank?%>
+  暂无留言!
+<%else%>
+  <table border="1">
+    <tr>
+      <th>留言者</th>
+      <th>内容</th>
+      <th>日期</th>
+    </tr>
+    <% for feedback in @feedbacks %>
+      <tr>
+        <td><%=h feedback.player.name %> </td>
+        <td><%=h feedback.body %></td>
+        <td><%=h feedback.created_at %></td>
+      </tr>
+    <% end %>
+  </table>
+<%end%>
+<%= will_paginate @feedbacks,:prev_label => "&lt;&lt;",:next_label => '&gt;&gt;',:separator => ' | ' %>
+<%form_for Feedback.new do |f| %>
+  <p>
+    <%=  f.label :body,'留言内容' %><br />
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit '留言' %>
+  </p>
+<%end%>

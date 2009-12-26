@@ -1,0 +1,703 @@
+body{
+    font-size:14px;
+    font-family: Verdana, Helvetica, Arial;
+    background-color:#fff;
+    color:#333;
+}
+body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, a, code, em, img, q, small, strong, dd, dl, dt, li, ol, ul, fieldset, form, label, table, tbody, tr, th, td, input {
+    margin:0;
+    padding:0;
+}
+ul {
+    list-style-image:none;
+    list-style-position:outside;
+    list-style-type:none;
+}
+a {
+    color:#1B97F2;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a img {
+    border: none;
+}
+h2, h2 a{
+    color: #E98C08;
+    font-size: 18px;
+}
+.l{
+    float:left;
+}
+.r{
+    float:right;
+}
+hr{
+    border:1px dashed #111;
+    width:80%;
+    text-align:left;
+}
+#container{
+    height:auto;
+    min-width:1000px;
+}
+#right{
+    float:left;
+    min-height:450px;
+    height:auto;
+    width:830px;
+    margin:5px 0 0 20px;
+}
+#rightheader{
+    height:50px;
+    line-height:2em;
+}
+#rightcontain{
+    min-height:370px;
+    height:auto;
+}
+#footer{
+    clear:both;
+    height:20px;
+    border-top:1px solid #eee;
+    margin:20px;
+    padding:10px
+}
+#content{
+    margin-top:10px;
+}
+
+#swleft{
+    min-width:150px;
+    width:30%;
+    min-height:200px;
+    height:auto;
+}
+#swright{
+    min-width:150px;
+    width:30%;
+    min-height:200px;
+    height:auto;
+}
+#swmid{
+    min-width:300px;
+    width:40%;
+    height:auto;
+}
+#fstatus{
+    height:200px;
+    overflow: auto;
+    width:90%
+}
+#cselect{
+    min-height:100px;
+    height:30%
+}
+
+#notice{
+    /*  border:#1B97F2 2px solid; */
+    margin:10px;
+    color:red;
+    text-align:center;
+    padding:10px;
+}
+
+.notice {
+    background:transparent url(/images/notice_bg.gif) repeat-x scroll left top;
+    border:1px solid #E6D08C;
+    font-size:12px;
+    height:35px !important;
+    line-height:35px !important;
+    margin-bottom:10px;
+    overflow:hidden;
+    padding:0 30px 0 20px;
+    position:relative;
+    text-align:left;
+    width:728px;
+}
+a.notice_close {
+    display:inline-block;
+    height:14px;
+    left:700px;
+    position:absolute;
+    top:1px;
+    width:120px;
+}
+
+#sidebar {
+    margin:20px 0 20px 10px;
+    background-color:#FCFCF3;
+    border-left:1px solid #E5E3D8;
+    border-right:1px solid #E5E3D8;
+    float:left;
+    width:132px;
+}
+#sidebar .sidebar-top {
+    background:transparent url(/images/sidebar/v2_l_top.gif) no-repeat scroll left top;
+    height:50px;
+    margin:-9px -1px -50px;
+}
+#sidebar .sidebar-bottom{
+    border:0 none;
+    background:transparent url(/images/sidebar/v2_bottom.png) no-repeat scroll left top;
+    height:10px;
+}
+
+#sidebar .app-list {
+    padding-top:10px;
+}
+
+#sidebar .app-list ul.activelist {
+    padding-top:5px;
+}
+#sidebar .app-list li a {
+    background:transparent url() no-repeat scroll 10px 9px;
+    display:block;
+    font-size:14px;
+    font-weight:bold;
+    height:30px;
+    line-height:30px;
+    overflow:hidden;
+    padding:0 5px 0 30px;
+}
+
+#sidebar .app-list .empty{
+    background:transparent url() no-repeat scroll 10px 9px;
+    display:block;
+    font-size:14px;
+    font-weight:bold;
+    color:#E98C08;
+    height:30px;
+    line-height:30px;
+    overflow:hidden;
+    padding:0 5px 0 30px;
+}
+
+#sidebar .app-list li a:hover {
+    background-color:#FFFF8C;
+}
+#sidebar .app-list .border-b {
+    border-bottom:1px solid #CCCCCC;
+    padding-bottom:5px;
+}
+#sidebar .app-list li.clipline {
+    border-bottom:1px solid #FFFFFF;
+    border-top:1px solid #CCCCCC;
+    font-size:0;
+    height:0;
+    line-height:0;
+    margin:5px 10px;
+}
+
+/*
+090529 add
+*/
+div#chat_button {
+    text-align: right;
+    position: fixed;
+    bottom: 0px;
+    right: 10px;
+    width: 250px;
+    border: 1px solid #ccc;
+    padding: 2px;
+    vertical-align: middle;
+    background-color: #eee;
+}
+div#chat_input {
+    position: fixed;
+    bottom: 25px;
+    right: 10px;
+    text-align: left;
+}
+div#chat_button img {
+    vertical-align: middle;
+}
+div#chat_button form {
+    float:left;
+}
+#ddchat_show{
+    text-align:left;
+    max-height:200px;
+    max-width:260px;
+    overflow:auto;
+}
+#ddchat_submit{
+    background:transparent url(/images/chat/chat.gif) no-repeat top left;
+    border:none;width:20px;height:20px;
+}
+
+* html div#chat_button {
+    position: absolute;
+    right: auto; bottom: auto;
+    left: expression( ( 0 - chat_button.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top: expression( ( 0 - chat_button.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+* html div#chat_input {
+    position: absolute;
+    right: auto; bottom: auto;
+    left: expression( ( 0 - chat_input.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' );
+    top: expression( ( -25 - chat_input.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+}
+* html div#chat_input form {
+    float:left;
+}
+
+/*
+    090920 add
+*/
+li{
+    list-style:none
+}
+/*
+	091221 add
+*/div.jGrowl {padding: 10px; z-index: 9999}
+ div.ie6 {position: absolute}
+div.ie6.top-right {right: auto; bottom: auto; left: expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' ); top: expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' )}
+div.ie6.top-left {left: expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' ); top: expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' )}
+div.ie6.bottom-right {left: expression( ( 0 - jGrowl.offsetWidth + ( document.documentElement.clientWidth ? document.documentElement.clientWidth : document.body.clientWidth ) + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' ); top: expression( ( 0 - jGrowl.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' )}
+div.ie6.bottom-left {left: expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' ); top: expression( ( 0 - jGrowl.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' )}
+div.ie6.center {left: expression( ( 0 + ( ignoreMe2 = document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft ) ) + 'px' ); top: expression( ( 0 + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' ); width: 100%}
+ body > div.jGrowl {position: fixed}
+body > div.jGrowl.top-left {left: 0px; top: 0px}
+body > div.jGrowl.top-right {right: 0px; top: 0px}
+body > div.jGrowl.bottom-left {left: 0px; bottom: 0px}
+body > div.jGrowl.bottom-right {right: 0px; bottom: 0px}
+body > div.jGrowl.center {top: 0px; width: 50%; left: 25%}
+ div.center div.jGrowl-notification, div.center div.jGrowl-closer {margin-left: auto; margin-right: auto}
+div.jGrowl div.jGrowl-notification, div.jGrowl div.jGrowl-closer {background-color: #000; color: #ff0; opacity: .85; filter: alpha(opacity = 85); zoom: 1; width: 300px; padding: 10px; margin-top: 5px; margin-bottom: 5px; font-family: monospace,Tahoma, Arial, Helvetica, sans-serif; font-size: 15px; text-align: left; display: none; -moz-border-radius: 5px; -webkit-border-radius: 5px}
+div.jGrowl div.jGrowl-notification {min-height: 40px}
+div.jGrowl div.jGrowl-notification div.header {font-weight: bold; font-size: 10px}
+div.jGrowl div.jGrowl-notification div.close {float: right; color: #fff; font-weight: bold; font-size: 12px; cursor: pointer}
+div.jGrowl div.jGrowl-closer {height: 15px; padding-top: 4px; padding-bottom: 4px; cursor: pointer; font-size: 11px; font-weight: bold; text-align: center}
+
+.dataTables_wrapper {
+	position: relative;
+	min-height: 302px;
+	_height: 302px;
+	clear: both;
+}
+
+.dataTables_processing {
+	position: absolute;
+	top: 0px;
+	left: 50%;
+	width: 250px;
+	margin-left: -125px;
+	border: 1px solid #ddd;
+	text-align: center;
+	color: #999;
+	font-size: 11px;
+	padding: 2px 0;
+}
+
+.dataTables_length {
+	width: 40%;
+	float: left;
+}
+
+.dataTables_filter {
+	width: 50%;
+	float: right;
+	text-align: right;
+}
+
+.dataTables_info {
+	width: 60%;
+	float: left;
+}
+
+.dataTables_paginate {
+	width: 44px;
+	* width: 50px;
+	float: right;
+	text-align: right;
+}
+
+/* Pagination nested */
+.paginate_disabled_previous, .paginate_enabled_previous, .paginate_disabled_next, .paginate_enabled_next {
+	height: 19px;
+	width: 19px;
+	margin-left: 3px;
+	float: left;
+}
+
+.paginate_disabled_previous {
+	background-image: url('../images/back_disabled.jpg');
+}
+
+.paginate_enabled_previous {
+	background-image: url('../images/back_enabled.jpg');
+}
+
+.paginate_disabled_next {
+	background-image: url('../images/forward_disabled.jpg');
+}
+
+.paginate_enabled_next {
+	background-image: url('../images/forward_enabled.jpg');
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables display
+ */
+table.display {
+	margin: 0 auto;
+	width: 100%;
+	clear: both;
+}
+
+table.display thead th {
+	padding: 3px 18px 3px 10px;
+	border-bottom: 1px solid black;
+	font-weight: bold;
+	cursor: pointer;
+	* cursor: hand;
+}
+
+table.display tfoot th {
+	padding: 3px 10px;
+	border-top: 1px solid black;
+	font-weight: bold;
+}
+
+table.display tr.heading2 td {
+	border-bottom: 1px solid #aaa;
+}
+
+table.display td {
+	padding: 3px 10px;
+}
+
+table.display td.center {
+	text-align: center;
+}
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables sorting
+ */
+
+.sorting_asc {
+	background: url('../images/sort_asc.jpg') no-repeat center right;
+}
+
+.sorting_desc {
+	background: url('../images/sort_desc.jpg') no-repeat center right;
+}
+
+.sorting {
+	background: url('../images/sort_both.jpg') no-repeat center right;
+}
+
+.sorting_asc_disabled {
+	background: url('../images/sort_asc_disabled.jpg') no-repeat center right;
+}
+
+.sorting_desc_disabled {
+	background: url('../images/sort_desc_disabled.jpg') no-repeat center right;
+}
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * DataTables row classes
+ */
+table.display tr.odd.gradeA {
+	background-color: #ddffdd;
+}
+
+table.display tr.even.gradeA {
+	background-color: #eeffee;
+}
+
+
+
+
+table.display tr.odd.gradeA {
+	background-color: #ddffdd;
+}
+
+table.display tr.even.gradeA {
+	background-color: #eeffee;
+}
+
+table.display tr.odd.gradeC {
+	background-color: #ddddff;
+}
+
+table.display tr.even.gradeC {
+	background-color: #eeeeff;
+}
+
+table.display tr.odd.gradeX {
+	background-color: #ffdddd;
+}
+
+table.display tr.even.gradeX {
+	background-color: #ffeeee;
+}
+
+table.display tr.odd.gradeU {
+	background-color: #ddd;
+}
+
+table.display tr.even.gradeU {
+	background-color: #eee;
+}
+
+
+tr.odd {
+	background-color: #E2E4FF;
+}
+
+tr.even {
+	background-color: white;
+}
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * Misc
+ */
+.top, .bottom {
+	padding: 15px;
+	background-color: #F5F5F5;
+	border: 1px solid #CCCCCC;
+}
+
+.top .dataTables_info {
+	float: none;
+}
+
+.clear {
+	clear: both;
+}
+
+.dataTables_empty {
+	text-align: center;
+}
+
+tfoot input {
+	margin: 0.5em 0;
+	width: 100%;
+	color: #444;
+}
+
+tfoot input.search_init {
+	color: #999;
+}
+
+td.group {
+	background-color: #d1cfd0;
+	border-bottom: 2px solid #A19B9E;
+	border-top: 2px solid #A19B9E;
+}
+
+td.details {
+	background-color: #d1cfd0;
+	border: 2px solid #A19B9E;
+}
+
+
+.example_alt_pagination div.dataTables_info {
+	width: 40%;
+}
+
+.paging_full_numbers {
+	width: 400px;
+	height: 22px;
+	line-height: 22px;
+}
+
+.paging_full_numbers span.paginate_button,
+ 	.paging_full_numbers span.paginate_active {
+	border: 1px solid #aaa;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	padding: 2px 5px;
+	margin: 0 3px;
+	cursor: pointer;
+	*cursor: hand;
+}
+
+.paging_full_numbers span.paginate_button {
+	background-color: #ddd;
+}
+
+.paging_full_numbers span.paginate_button:hover {
+	background-color: #ccc;
+}
+
+.paging_full_numbers span.paginate_active {
+	background-color: #99B3FF;
+}
+
+table.display tr.even.row_selected td {
+	background-color: #B0BED9;
+}
+
+table.display tr.odd.row_selected td {
+	background-color: #9FAFD1;
+}
+
+
+/*
+ * Sorting classes for columns
+ */
+/* For the standard odd/even */
+tr.odd td.sorting_1 {
+	background-color: #D3D6FF;
+}
+
+tr.odd td.sorting_2 {
+	background-color: #DADCFF;
+}
+
+tr.odd td.sorting_3 {
+	background-color: #E0E2FF;
+}
+
+tr.even td.sorting_1 {
+	background-color: #EAEBFF;
+}
+
+tr.even td.sorting_2 {
+	background-color: #F2F3FF;
+}
+
+tr.even td.sorting_3 {
+	background-color: #F9F9FF;
+}
+
+
+/* For the Conditional-CSS grading rows */
+/*
+ 	Colour calculations (based off the main row colours)
+  Level 1:
+		dd > c4
+		ee > d5
+	Level 2:
+	  dd > d1
+	  ee > e2
+ */
+tr.odd.gradeA td.sorting_1 {
+	background-color: #c4ffc4;
+}
+
+tr.odd.gradeA td.sorting_2 {
+	background-color: #d1ffd1;
+}
+
+tr.odd.gradeA td.sorting_3 {
+	background-color: #d1ffd1;
+}
+
+tr.even.gradeA td.sorting_1 {
+	background-color: #d5ffd5;
+}
+
+tr.even.gradeA td.sorting_2 {
+	background-color: #e2ffe2;
+}
+
+tr.even.gradeA td.sorting_3 {
+	background-color: #e2ffe2;
+}
+
+tr.odd.gradeC td.sorting_1 {
+	background-color: #c4c4ff;
+}
+
+tr.odd.gradeC td.sorting_2 {
+	background-color: #d1d1ff;
+}
+
+tr.odd.gradeC td.sorting_3 {
+	background-color: #d1d1ff;
+}
+
+tr.even.gradeC td.sorting_1 {
+	background-color: #d5d5ff;
+}
+
+tr.even.gradeC td.sorting_2 {
+	background-color: #e2e2ff;
+}
+
+tr.even.gradeC td.sorting_3 {
+	background-color: #e2e2ff;
+}
+
+tr.odd.gradeX td.sorting_1 {
+	background-color: #ffc4c4;
+}
+
+tr.odd.gradeX td.sorting_2 {
+	background-color: #ffd1d1;
+}
+
+tr.odd.gradeX td.sorting_3 {
+	background-color: #ffd1d1;
+}
+
+tr.even.gradeX td.sorting_1 {
+	background-color: #ffd5d5;
+}
+
+tr.even.gradeX td.sorting_2 {
+	background-color: #ffe2e2;
+}
+
+tr.even.gradeX td.sorting_3 {
+	background-color: #ffe2e2;
+}
+
+tr.odd.gradeU td.sorting_1 {
+	background-color: #c4c4c4;
+}
+
+tr.odd.gradeU td.sorting_2 {
+	background-color: #d1d1d1;
+}
+
+tr.odd.gradeU td.sorting_3 {
+	background-color: #d1d1d1;
+}
+
+tr.even.gradeU td.sorting_1 {
+	background-color: #d5d5d5;
+}
+
+tr.even.gradeU td.sorting_2 {
+	background-color: #e2e2e2;
+}
+
+tr.even.gradeU td.sorting_3 {
+	background-color: #e2e2e2;
+}
+
+
+/*
+ * Row highlighting example
+ */
+.ex_highlight #example tbody tr.even:hover, #example tbody tr.even td.highlighted {
+	background-color: #ECFFB3;
+}
+
+.ex_highlight #example tbody tr.odd:hover, #example tbody tr.odd td.highlighted {
+	background-color: #E6FF99;
+}
+
+#player_items tr td .text{
+  width: 30px;
+}

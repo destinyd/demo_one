@@ -1,0 +1,31 @@
+#swleft{
+  min-width:150px;
+  width:30%;
+  min-height:200px;
+  height:auto;
+}
+#swright{
+  min-width:150px;
+  width:30%;
+  min-height:200px;
+  height:auto;
+}
+#swmid{
+  min-width:300px;
+  width:40%;
+  height:auto;
+}
+#fstatus{
+  height:200px;
+  overflow: auto;
+  width:90%
+}
+#cselect{
+  min-height:100px;
+  height:30%
+}
+#notice{
+  color:red;
+  min-height:50px;
+  height:20%
+}

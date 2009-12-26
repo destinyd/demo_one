@@ -1,0 +1,6 @@
+队伍：<%= party.name %> <br />
+队长：<%= party.teamleader.name %> <br />
+成员：(<%= "#{party.adventurers.length}/5"  %> )<br />
+<%party.adventurers.each do |ad|%>
+  <li>(<%= GameDiyWar::Constant.jobsnames[ad.job] %>)<%= ad.name %> <%= "[#{ad.hp}/#{ad.mhp}]" %> <%= link_to "踢出队伍",{:action => :update,:id => party, :adventurer_id => ad.id},:method => :put if ad !=  @ad and party.teamleader  == @ad  %></li>
+<%end%> <br /><br />

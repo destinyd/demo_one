@@ -1,0 +1,4 @@
+成员：(<%= "#{@party.adventurers.length}/5"  %> )<br />
+<%@party.adventurers.each do |ad|%>
+    <%= ad.name %><br />
+<%end%>

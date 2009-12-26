@@ -1,0 +1,26 @@
+<div id="pet_<%=pet.id%>" style="clear:both">
+  <div class="l" style="width:220px;height:220px"></div>
+  <div class="l" style="width:600px;min-height:220px;">
+    宠物名称:<%=
+    if pet.pet.isnamed
+      h(pet.pet.name)
+    else
+      link_to h(pet.pet.name),edit_pet_path(pet.pet),:alt=>"给此物品命名"
+    end
+  %><br />
+    生命值&nbsp;&nbsp;&nbsp;:<%= "#{pet.hp}/#{pet.pet.hp}"  %><br />
+    饱腹度&nbsp;&nbsp;&nbsp;:<%= "#{pet.food}/#{pet.hp}"%>&nbsp;&nbsp;(%<%=sprintf("%.2f",100.0*pet.food/pet.hp)%>)<br />
+    快乐度&nbsp;&nbsp;&nbsp;:<%= "#{pet.happy}/#{pet.hp}"%>&nbsp;&nbsp;(%<%=sprintf("%.2f",100.0*pet.happy/pet.hp)%>)<br />
+    宠物系别:<%= Pet.ictype[pet.pet.ctype]   %><br />
+    宠物状态:<%= output   %><br />
+    合成选择:<input type="checkbox" value="<%=pet.id%>" class="pets"><br />
+    <%=  "祈祷材料:#{pet.pray_materials_name}<br />" if pet.needs && pet.ispray == false  %>
+    <%if pet.is_feed_over? %>
+      <%= link_to_remote "实物化",:url => kill_pet_path(pet) %><br />
+      <%=link_to_remote "祈祷",:url => pray_pet_path(pet) unless pet.ispray  %>
+    <%else%>
+      <%= link_to_remote "喂食",:url => feed_pet_path(pet) %><br />
+      <%= link_to_remote "逗弄",:url => play_pet_path(pet) %>
+    <%end%>
+  </div>
+</div>

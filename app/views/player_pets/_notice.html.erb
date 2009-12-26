@@ -1,0 +1,20 @@
+<div class="notice">
+  <strong>宠物养成说明:</strong>
+  宠物每6小时成长一次，养成时间为1天，成长时《饱腹度》80%为最佳，《快乐度》决定了实物化兑换材料的品质。
+</div>
+<div class="notice">
+  <strong>宠物合成说明:</strong>
+  2只以上宠物可以合成，如果生命平均值在本系宠物中为一个新的阶段值(20点为一阶)，则会产生新宠物。
+</div>
+<div class="notice">
+  <strong>注意:</strong>
+  宠物《饱腹度》《快乐度》每小时降低2%，跌到0点以下则会逃跑。
+</div>
+<% if @pet_game.could_adopt? %>
+<div class="notice">
+  <a href="/player_pets/new" class="notice_close" style="font-weight: bold; color: rgb(0, 94, 172); text-decoration: none;">领养宠物</a>
+  <strong>领养宠物:</strong>
+  你还没有宠物，赶快领养一只吧！
+</div>
+<% end %>
+

@@ -1,0 +1,38 @@
+<div id="swleft" class="l">
+  <div id="self">
+    <%=render :partial => 'status' , :object => @infos[:self] %>
+  </div>
+  <div id="scene">
+    <%=render :partial => 'scene' , :object => @infos %>
+  </div>
+  <div id="action">
+    <%= form_remote_tag :url => pfight_adventures_path %>
+    <%@ws.select_info.each_with_index do |info,index|%>
+      <select name="a[p<%=index%>]">
+        <%= options_for_select info %>
+      </select>
+    <%end%><br />
+    <%=submit_tag "确定",:id => "submit" %>
+    </form>
+  </div>
+  <%= link_to "返回",adventures_path,:style => "display:none",:id => "back" %>
+</div>
+<div id="swmid" class="l">
+  <div id="fstatus"></div>
+  <div id="fnotice"></div>
+</div>
+
+<%#*<div id="teammate">%>
+<%#=render :partial => 'status' , :collection => @infos[:teammate] %>
+<%#*</div>%>
+<div id="swright" class="l">
+  <div id="enemy">
+    <%=render :partial => 'status' , :object => @infos[:enemy][0] %>
+  </div>
+</div>
+<script>
+  function fstatus_scroll(){
+    $('#fstatus')[0].scrollTop = 10000000000000;$('#fstatus')[0].scrollTop += 100000;
+  }
+  getTimer = setInterval(function() {$.ajax({data:'authenticity_token=' + encodeURIComponent('<%=escape_javascript form_authenticity_token%>'), dataType:'script', type:'post', url:'/adventures/pfight'})}, 2 * 1000)
+</script>

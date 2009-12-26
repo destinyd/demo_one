@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  isnamed: false
+  hp: 1
+  ctype: 1
+  player_id: 1
+
+two:
+  name: MyString
+  isnamed: false
+  hp: 1
+  ctype: 1
+  player_id: 1

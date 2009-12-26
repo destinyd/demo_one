@@ -1,0 +1,33 @@
+%table
+  %tr
+    %td HP
+    %td=@S.hp
+  %tr
+    %td 胜利
+    %td=@S.win
+  %tr
+    %td 失败
+    %td=@S.lost
+  %tr
+    %td 武器
+    %td
+      -if @S.weapon_id
+        =Equip.find(@S.weapon_id).name
+      -else
+        无
+  %tr
+    %td 防具
+    %td
+      -if @S.armor_id
+        =Equip.find(@S.armor_id).name
+      -else
+        无
+  %tr
+    %td 横斩熟练度
+    %td=@S.a
+  %tr
+    %td 重劈熟练度
+    %td=@S.b
+  %tr
+    %td 直刺熟练度
+    %td=@S.c

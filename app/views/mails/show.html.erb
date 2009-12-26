@@ -1,0 +1,7 @@
+<div>标题： <%= @mail.title  %>  </div>
+<div>来自：<%= @mail.from %></div>
+<div>内容：<br /> <%= @mail.body  %>  </div>
+<div>
+  <%=link_to "回复",{:action => :new ,"mail[to_name]" => @mail.from,"mail[title]" => @mail.title} %>
+<%= link_to "删除",mail_path(@mail),:method => :delete %>
+</div>

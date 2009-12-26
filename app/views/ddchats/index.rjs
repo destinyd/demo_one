@@ -1,0 +1,1 @@
+page.insert_html :top, :ddchat_show, :partial => 'ddchats/chat',:collection => @ddchats unless @ddchats.blank?

@@ -1,0 +1,23 @@
+<li style="min-height:28px;overflow:hidden;
+    padding:9px 50px 12px 12px;
+    width:388px;border-bottom:1px dashed #DDDDDD;
+    font-size:14px;color:#4B585E;">
+  <span style=""><%= status.status %></span>
+  <span style="color:#999999;
+        display:block;
+        font-size:12px;
+        margin-top:3px;">
+    <%=
+    a=(Time.now-status.created_at).to_i
+    if a<1.minutes.seconds
+      "#{a}秒前"
+    elsif a<1.hour.seconds
+      "#{a/1.minutes}分钟前"
+    elsif a<1.day.seconds
+      "#{a/1.hour.seconds}小时前"
+    else
+      "#{a/1.day.seconds}天前"
+    end
+  %>
+  </span>
+</li>

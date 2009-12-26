@@ -1,0 +1,23 @@
+<% form_for(@auction,:url => {:action => :create,:item => {:id => params[:item][:id],
+    :type => params[:item][:type]}}) do |f| %>
+  <%= f.error_messages %>
+  <%=f.hidden_field :item_id,:value => params[:item][:id] %>
+  <%=f.hidden_field :item_type,:value => params[:item][:type] %>
+  <p>
+    <%= f.label "数量" %><br />
+    <%= f.text_field :num %>
+  </p>
+  <p>
+    <%= f.label "价格" %><br />
+    <%= f.text_field :money %>
+  </p>
+  <p>
+    <%= f.label "拍卖天数" %>
+    <%= select_tag "sellday" ,30.times.collect{|i| "<option value=#{i+1}>#{i+1}</option>" } %>(初始费用为价格*10%*拍卖天数，最后收取最后收入*拍卖天数*1%提成)
+  </p>
+  <p>
+    <%= f.submit "提交" %>
+  </p>
+<% end %>
+
+<%= link_to '后退', shops_path %>

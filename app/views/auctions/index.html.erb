@@ -1,0 +1,30 @@
+<table>
+  <tr>
+    <th>名称</th>
+    <th>数量</th>
+    <th>最高竞价者</th>
+    <th>最高竞价</th>
+    <th>剩余时间</th>
+    <th>操作</th>
+  </tr>
+  <% for auction in @Auctions %>
+    <tr>
+      <td><%=auction.item.name %></td>
+      <td><%=auction.num  %> </td>
+      <td><%=auction.highest.name if auction.highest  %> </td>
+      <td><%=auction.money  %> </td>
+      <td><%= a=(auction.finish_at-Time.now).to_i
+        if a<1.minutes.seconds
+          "#{a}秒后"
+        elsif a<1.hour.seconds
+          "#{a/1.minutes}分钟前"
+        elsif a<1.day.seconds
+          "#{a/1.hour.seconds}小时后"
+        else
+          "#{a/1.day.seconds}天后"
+        end
+      %> </td>
+      <td><%=link_to "最低价竞拍",min_auction_path(auction),:method => :post %></td>
+    </tr>
+  <%end%>
+</table>

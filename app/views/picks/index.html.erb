@@ -1,0 +1,15 @@
+<div class="notice">
+  <strong> 采集场说明:</strong>
+  采集场每5分钟能收获一次，收获的材料可以合成装备，或卖掉换取游戏金币。
+</div>
+<div id="ctype">
+  <%="你的采集场类型为'#{@pick_game.mtype.human_name}',等级为'#{@pick.level}'&nbsp;"%>
+  <%=link_to "改造",edit_pick_path(0)%>
+</div>
+<div id="getItems">
+  <% if @result.blank? %>
+  采集时间必须超过5分钟才能有收获。
+  <% else %>
+    <%= render :partial => 'get_items', :object => @result %>
+  <% end %>
+</div>

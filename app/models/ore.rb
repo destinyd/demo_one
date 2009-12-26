@@ -1,0 +1,3 @@
+class Ore < Material
+
+end

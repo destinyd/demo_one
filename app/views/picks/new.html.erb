@@ -1,0 +1,11 @@
+<%  form_for @pick do |f| %>
+  <%= f.error_messages %>
+  <p><%= f.label :ctype,"采集场种类" %> <br />
+    <% @mtype.each do |k,v| %>
+      <%= k  %><%= radio_button_tag "pick[ctype]",v %>
+    <% end %>
+  </p>
+  <p>
+    <%=  submit_tag "创建",:name => nil %>
+  </p>
+<%  end %>

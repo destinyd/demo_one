@@ -1,0 +1,6 @@
+nbproject
+log/*
+old*
+config/database.yml
+tmp
+.idea

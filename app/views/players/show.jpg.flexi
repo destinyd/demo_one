@@ -1,0 +1,6 @@
+@player.operate do |image|
+  image.resize '400x400' , :crop => true
+  image.unsharp_mask
+  image.shadow
+end
+

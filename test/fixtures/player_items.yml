@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  player_id: 1
+  item_id: 1
+  amount: 1
+  lock: false
+
+two:
+  player_id: 1
+  item_id: 1
+  amount: 1
+  lock: false

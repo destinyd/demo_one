@@ -1,0 +1,6 @@
+回合：<%=scene[:round] %><br />
+<%if scene[:over] %>
+  战斗结束<br />
+<%else%>
+  剩余时间：<%= scene[:timeout] unless scene[:over] %>秒
+<%end%>

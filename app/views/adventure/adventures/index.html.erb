@@ -1,0 +1,14 @@
+hp:<%= "#{@a.hp}/#{@a.mhp}" %><br />
+杀敌:<%= @a.kill %><br />
+胜:<%= @a.win %><br />
+负:<%= @a.lose %><br />
+职业:<%= GameDiyWar::Constant.jobsnames[@a.job] %><br />
+武器:<%=  @a[:weapon] ? @a[:weapon] : "无" %><br />
+防具:<%=  @a[:armor] ? @a[:armor] : "无" %><br />
+附加：<%= @a.plus.blank? ? "" : @a.plus %> <br /><br />
+<%= link_to "训练",adventure_trains_path %>
+<%= link_to "独自冒险",adventure_solos_path %>
+<%= link_to "团队冒险",adventure_partys_path %>
+<%= link_to "对决",adventure_fight_waits_path %>
+<br />
+<%= link_to "转职",edit_adventure_job_path(@a) %>

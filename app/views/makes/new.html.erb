@@ -1,0 +1,19 @@
+<div class='notice'>
+  <strong>合成说明</strong>
+  合成出道具种类根据材料类型来判断，材料总数为多于1个，少于等于50个。
+</div>
+<table id='table_materials'>
+</table>
+<button onclick='Make.select_materials()'>添加材料</button>
+<table id='table_use'>
+</table>
+<form action='/makes' METHOD='POST' id='form_makes'>
+  <input type='hidden' name='authenticity_token' value='<%=form_authenticity_token%>' />
+</form>
+<button id='start_makes'  style='display:none' onclick='Make.submit()'>开始合成</button>
+<script>
+  Make.init(
+    <%= @materials_json -%>
+  );
+  Make.render();
+</script>

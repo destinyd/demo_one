@@ -1,0 +1,2 @@
+page<<"alert(\"宠物#{@pet.pet.name}实物化，获得#{@item.name}#{@pet.hp}个\")"
+page.remove "pet_#{@pet.id}"

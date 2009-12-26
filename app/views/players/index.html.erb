@@ -1,0 +1,19 @@
+<table>
+  <tr><td><%= image_tag formatted_player_path(@player, :jpg) %></td></tr>
+  <tr>
+    <td>角色名</td>
+    <td><%= h @player.name %></td>
+  </tr>
+  <tr>
+    <td>金币</td>
+    <td><%= @player.money %></td>
+  </tr>
+  <tr>
+    <td>称号</td>
+    <td><%= in_place_editor_field :player, :signed %></td>
+  </tr>
+  <tr>
+    <td>头衔</td>
+    <td><%= h @player.title %></td>
+  </tr>
+</table>

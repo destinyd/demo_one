@@ -1,0 +1,6 @@
+if @success
+  page<<"alert(\"祈祷成功\")"
+  page.call 'location.reload'
+else
+  page<<"alert(\"祈祷失败，请确认你拥有祈祷所需材料\")"
+end

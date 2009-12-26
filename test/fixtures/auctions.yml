@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  player_id: 1
+  highest_id: 1
+  item: 
+  num: 1
+  money: 1
+  finish_at: 2009-04-09 12:38:04
+
+two:
+  player_id: 1
+  highest_id: 1
+  item: 
+  num: 1
+  money: 1
+  finish_at: 2009-04-09 12:38:04

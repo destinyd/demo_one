@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ctype: 1
+  level: 1
+  player_id: 1
+  picked_at: 2009-11-10 10:01:51
+
+two:
+  ctype: 1
+  level: 1
+  player_id: 1
+  picked_at: 2009-11-10 10:01:51

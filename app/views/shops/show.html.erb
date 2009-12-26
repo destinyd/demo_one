@@ -1,0 +1,25 @@
+<p>
+  <b>名称:</b>
+  <%=h @shop.item.name %>
+</p>
+
+<p>
+  <b>数量:</b>
+  <%=h @shop.num %>
+</p>
+
+<p>
+  <b>单价:</b>
+  <%=h @shop.price %>
+</p>
+<%form_for @shop,:url => buy_shop_path(@shop) do |f| %>
+  <p>
+  <b>购买数量</b>
+  <%=f.text_field :num%>
+  </p>
+  <p>
+    <%=f.submit "购买" %>
+  </p>
+<%end unless @shop.player.is_self?(current_player)%>
+
+<%= link_to '后退', shops_path %>

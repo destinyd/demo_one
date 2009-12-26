@@ -1,0 +1,17 @@
+<div id="mails">
+  <% if @mails.blank? %>
+    你还没有邮件！
+  <%else %>
+    <table>
+      <tr>
+        <th>标题</th>
+        <th>来源</th>
+        <th>时间</th>
+        <th>操作</th>
+      </tr>
+      <%=render :partial => 'mail',:collection => @mails%>
+    </table>
+    <%= will_paginate @mails, :page_links => false ,:prev_label => '上一页',:next_label => '下一页'  %>
+  <% end %>
+</div>
+<%=link_to "发邮件",new_mail_path %>

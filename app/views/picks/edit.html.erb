@@ -1,0 +1,21 @@
+<div class="notice">
+  <strong>采集场改造说明:</strong>
+  你可以改变采集场类型，等级不变，升级花费为10的(1+2*当前等级)。
+</div>
+<div id="ctype">
+  <%=  "你的采集场类型为'#{@pick_type}',等级为'#{@pick.level}'（需要花费#{@level_up_money}，你有#{@player.money}）&nbsp;" %>
+  <%= link_to "升级", level_up_picks_path if @player.money > @level_up_money %>
+</div> <br /> 
+<div>
+  <% form_for @pick,:method => :put do |f| %>
+    <p>
+      <%= f.label :ctype,"采集场类型转换：" %> <br />
+      <% @mtype.each do |k,v| %>
+        <%= k  %><%= radio_button_tag "pick[ctype]",v %>
+      <% end %>
+    </p>
+    <p>
+      <%= f.submit "改造", :name => nil %>
+    </p>
+  <% end %>
+</div>

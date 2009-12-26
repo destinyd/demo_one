@@ -1,0 +1,6 @@
+<%form_tag :action => :create do%>
+  <select name="job">
+    <%= options_for_select @jobsnames %>
+  </select>
+  <input type="submit" value="就职" />
+<%end%>

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  type: MyString
+  level: 1
+  attributes: MyString
+  plus: MyString
+  player_id: 1
+  vip: false
+
+two:
+  type: MyString
+  level: 1
+  attributes: MyString
+  plus: MyString
+  player_id: 1
+  vip: false

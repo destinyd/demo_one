@@ -1,0 +1,8 @@
+<%= render :partial => 'adventure/party',:object => @party %>
+<% if @party.teamleader == @ad %>
+  <%= link_to "开始战斗",adventure_party_adventures_path %>
+  <%= link_to "招募成员",{:controller => :party_waits,:action => :new} if @party.adventurers.length <5  %>
+  <%= link_to "队伍解散",adventure_party_path(@party),:confirm => "你确定要解散队伍吗？",:method => :delete %>
+<% else %>
+    <%= link_to "退出队伍",{:action => :update,:id => @party , :adventurer_id => @ad.id},:method => :put %>
+<% end %>

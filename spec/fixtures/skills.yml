@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  job: 1
+  hits: MyString
+  player_id: 1
+  plus: MyString
+
+two:
+  job: 1
+  hits: MyString
+  player_id: 1
+  plus: MyString

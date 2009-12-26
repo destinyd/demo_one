@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>物品名</th>
+    <th>类型</th>
+    <th>数量</th>
+    <th>单价</th>
+  </tr>
+  <% for shop in @shops %>
+    <tr>
+      <td><%=h shop.item.name %></td>
+      <td><%=h shop.class.human_name  %></td>
+      <td><%=h shop.num %></td>
+      <td><%=h shop.price %></td>
+      <td><%= link_to '买', shop %></td>
+      <%if shop.player_id == current_player.id %>
+        <td><%= link_to '删除', shop, :confirm => '确定删除吗?', :method => :delete %></td>
+      <%end %>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @shops,:prev_label => "&lt;&lt;",:next_label => '&gt;&gt;',:separator => ' | '%>

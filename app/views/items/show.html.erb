@@ -1,0 +1,7 @@
+名称：<%= @item.name %> <br />
+类型：<%= @item.class.human_name %> <br /> 
+等级：<%= @item.level %>  <br />
+属性：
+  <%= render "detail", :object => @item.property_detail %>
+附加属性： <%= render "detail", :object => @item.plus_detail %>  <br />
+发现者：<%= link_to @finder.name,player_path(@finder) %>

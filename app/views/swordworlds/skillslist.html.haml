@@ -1,0 +1,14 @@
+%table
+  %tr
+    %th 名称
+    %th 招式总数
+    %th 攻击方式
+  -@skills.each do |skill|
+    %tr
+      -unless skill.isnamed
+        %td
+          =link_to h(skill.name),edit_swordworld_path(skill),:alt=>"给此技能命名"
+      -else
+        %td=h(skill.name)
+      %td=skill.len
+      %td=skill.hits

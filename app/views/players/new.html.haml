@@ -1,0 +1,8 @@
+%h2 游戏人物命名
+-form_for @player do |f|
+  =f.error_messages
+  %p
+    %label 角色名
+    = f.text_field h(:name)
+  %p
+    = f.submit "创建"

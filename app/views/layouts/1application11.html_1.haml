@@ -1,0 +1,40 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml" }
+  %head
+    %title= @title || "游戏DIY"
+    %meta{'http-equiv' => "content-type",:content=>"application/xhtml+xml;charset=UTF-8"}
+    = stylesheet_link_tag "css", :cache => true
+  %body
+    #container
+      #left
+        -Plugin.find([1,4,7,10]).each do |plugin|
+          %a{:href => plugin.url,:title => plugin.description}=plugin.name
+          %br
+          -plugin.plugins.each do |p|
+            %a{:href => p.url,:title => p.description,:style => "margin-left:10px"}=p.name
+            %br
+          %br
+        %hr
+        -if session[:user_id]
+          %p
+            %a{:href => "/myhome"} 最近状态
+          %p
+            %a{:href=>"/players"} 我的状态
+          %p
+            %a{:href => "/mails"}
+              我的邮件
+              =#"(#{current_player.count_new_mail}条新消息)" unless current_player.count_new_mail == 0
+          %p
+            %a{:href=>"/pluginmanages/new"} 添加游戏
+          %p
+            %a{:href=>"/pluginmanages"} 游戏管理
+      #right
+        #rightheader
+          .r
+            %a{:href=>"/invent"} 邀请
+            %a{:href=>"/logout"} 登出
+        #rightcontain
+          -if flash[:notice]
+            #notice=flash[:notice]
+          =@content_for_layout
+      #footer

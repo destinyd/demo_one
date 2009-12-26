@@ -1,0 +1,17 @@
+<% form_for(@shop,:url => {:action => :create}) do |f| %>
+  <%= f.error_messages %>
+  <%=f.hidden_field :player_item_id,:value => @player_item.id %>
+  <p>
+    <%= f.label "数量" %><br />
+    <%= f.text_field :num %>
+  </p>
+  <p>
+    <%= f.label "单价" %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.submit "提交" %>
+  </p>
+<% end %>
+
+<%= link_to '后退', shops_path %>

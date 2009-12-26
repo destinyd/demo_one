@@ -1,0 +1,4 @@
+page.replace_html :fnotice,"战斗结束"
+page.insert_html :top, :fstatus,@output
+page[:btn_submit].value="战斗结束"
+page[:btn_submit].disabled= true

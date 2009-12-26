@@ -1,0 +1,29 @@
+<div style="width:780px">
+%table#player_items.display
+  %thead
+    %tr
+      %th 名称
+      %th 数量
+      %th 等级
+      %th 种类
+      %th{:style => 'width:100px'} 出售
+      %th 操作
+  %tbody
+    -@player_items.each do |player_item|
+      %tr
+        %td=item_name(player_item.item)
+        %td=player_item.amount
+        %td=player_item.item.level
+        %td=player_item.item.class.human_name
+        %td
+          -form_tag player_item_path(player_item),:method => :delete do
+            =text_field_tag :amount,player_item.amount,:style => 'width:30px',:id => nil
+            =submit_tag "出售",:confirm => "确定要出售？", :id => false
+        %td
+          =item_known(player_item)
+          -unless player_item.lock
+            =link_to "摆摊",{:controller => :shops,:action => :new,:player_item => player_item.id}
+            =#link_to "拍卖",{:controller => :auctions,:action => :new,:player_item => player_item.id}
+%script $('#player_items').dataTable();
+=#will_paginate @player_items,:prev_label => "&lt;&lt;",:next_label => '&gt;&gt;',:separator => ' | '
+</div>

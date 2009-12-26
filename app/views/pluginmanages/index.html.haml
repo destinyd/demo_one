@@ -1,0 +1,9 @@
+%div
+  -if @pluginmanages
+    -@pluginmanages.each do |plugin|
+      .plugin
+        %div{:style=>"margin:10px 0;clear:both;min-height:60px;"}
+          .l= plugin.name
+          %br
+          .l= plugin.description
+          .r= link_to '删除',"/pluginmanages/"+plugin.id.to_s, :confirm => '你确定?', :method => :delete

@@ -1,0 +1,3 @@
+class Leather < Material
+
+end

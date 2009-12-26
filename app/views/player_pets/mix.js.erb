@@ -1,0 +1,4 @@
+Pet.init(<%= @player_pets_json %>);
+Pet.render();
+$('#msg_player_pet<%= @player_pet.id %>').html("<%= @player_pet.name %>合成成功!");
+$('#msg_player_pet<%= @player_pet.id%>').effect("highlight", {}, 3000);
