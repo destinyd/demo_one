@@ -38,7 +38,7 @@ class PicksController < ApplicationController
   def new
     @subtitle="建立采集场"
     @pick = @player.build_pick
-    @mtype = Material.mtype
+    @mtype = MATERIAL_TYPES_TO_IDS
   end
   
   def create
@@ -47,7 +47,7 @@ class PicksController < ApplicationController
     if @pick.save
       index_by_flash "你的采集场已经建立"
     else
-      @ctype = Material.mtype
+      @mtype = MATERIAL_TYPES_TO_IDS
       render :action => :new
     end
   end

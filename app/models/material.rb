@@ -20,18 +20,4 @@ class Material < Item
 
   #@mtype={"矿石" => 0,"木头" => 1,"皮革" => 2}# ,"药草" => 3,"食材" => 4,"宝石" => 5}
 #  @imtype={0 => "矿石",1 => "木头",2 => "皮革"}
-  def self.mtype
-    return @mtype unless @mtype.blank?
-    index = 0
-    @mtype  = {}
-    @@material_types.each do |mt|
-      @mtype[mt]  = index
-      index += 1
-    end
-    @mtype
-  end
-
-  def self.imtype
-    @imtype ||= @mtype.invert
-  end
 end

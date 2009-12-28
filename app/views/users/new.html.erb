@@ -17,10 +17,11 @@
 <%= label_tag 'player_name','你的角色名称'   %> <br />
 <p> <%= player.text_field :name %>
 </p>
+<%= label_tag 'image_file','你的角色自定义头像（非必须）'   %> <br />
 <p> <%= player.file_field :image_file %> </p>
 <% end %>
 
 <%=hidden_field_tag 'player_id',params[:id]%>
 <p><%= submit_tag '注册',:name => nil %></p>
 <% end -%>
-<p>以上均为必填项</p>
+<p>以上除了特别说明，否则均为必填项</p>
