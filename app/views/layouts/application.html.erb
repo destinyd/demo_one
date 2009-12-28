@@ -55,14 +55,16 @@
                   <%= link_to p.name , p.url , :title => p.description -%>
                 </li>
               <%end%>
-            <%end if current_player%>
+            <%end if current_player and false%>
             <li><a href="/adventure/adventures">冒险世界</a></li>
             <li><a href='/feedbacks'>留言板</a></li>
           </ul>
+          <!--
           <ul class="activelist">
             <li><a href="/pluginmanages/new" class="addapp">添加游戏</a></li>
             <li><a href="/pluginmanages" class="addapp">游戏管理</a></li>
           </ul>
+          -->
         </div>
         <div class="sidebar-bottom"></div>
       </div>
