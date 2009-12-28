@@ -27,7 +27,7 @@ Rails::Initializer.run do |config|
 
   # Specify gems that this application depends on. 
   # They can then be installed with "rake gems:install" on new installations.
-  # config.gem "bj"
+  #config.gem "rmagick"
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "aws-s3", :lib => "aws/s3"
 
@@ -71,9 +71,3 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 end
 
-MATERIAL_TYPES = ["Ore","Wood","Leather"]
-MATERIAL_TYPES_TO_IDS = {}
-MATERIAL_TYPES.each_with_index do |v,i|
-  MATERIAL_TYPES_TO_IDS[v] = i
-end
-EQUIP_TYPES = ["Sword","Clothes"]
