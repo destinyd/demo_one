@@ -1,10 +1,12 @@
 class Item < ActiveRecord::Base
   acts_as_nameable
   belongs_to :player
-  validates_presence_of     :property,:level,:player_id
+  validates_presence_of     :properties,:level,:player_id
 
   attr_accessible :name , :on => :update
-  attr_accessible :property, :plus, :player_id, :level, :system_named , :on => :update
+  attr_accessible :property,:properties, :plus, :player_id, :level, :system_named , :on => :create
+
+  attr_accessor :properties
 
   has_many :player_items,:dependent => :destroy
   has_many :players, :through => :player_items
@@ -14,6 +16,8 @@ class Item < ActiveRecord::Base
 
   named_scope :materials,:conditions => {:type => ::MATERIAL_TYPES}
   named_scope :equips,:conditions => {:type => ::EQUIP_TYPES}
+
+  before_create :properties_to_property
 
   def amount
     self[:amount].to_i
@@ -52,18 +56,9 @@ class Item < ActiveRecord::Base
   def self.get(level,properties,pluses)
     first :conditions => {
       :level => level,
-      :property => Item.get_property(properties),
-      :plus => pluses ? Item.get_property(pluses) : nil
+      :property => get_property(properties),
+      :plus => pluses ? get_property(pluses) : nil
     }
-  end
-
-  def self.get_property(properties)
-    p = ""
-    properties.each do |k,v|
-      p += ";" unless p.blank?
-      p +=  "#{k}:#{v}"
-    end
-    p
   end
 
   def properties
@@ -88,22 +83,27 @@ class Item < ActiveRecord::Base
     @pluses
   end
 
+  def self.get_property(properties)
+    p = ""
+    properties.each do |k,v|
+      p += ";" unless p.blank?
+      p +=  "#{k}:#{v}"
+    end
+    p
+  end
+
   protected
+  def properties_to_property
+    self.property = Item.get_property(self.properties)
+    self.plus = Item.get_property(self.pluses)
+  end
+
   def self.init_name
     "#{self.human_name}#{self.time_string}"
   end
 
   def self.time_string
     Time.now.strftime("%Y%m%d%H%M%S") + sprintf("%04d",rand(10000))
-  end
-  
-  def properties_to_property
-    @property = ""
-    @properties.each do |k,v|
-      @property += ";" unless @property.blank?
-      @property += "#{k}:#{v}"
-    end
-    @properties = nil
   end
 
   #  class Equip < ActiveRecord::Base

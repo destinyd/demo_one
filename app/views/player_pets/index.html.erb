@@ -1,28 +1,16 @@
 <%= render :partial => 'notice', :locale => @pet_game %>
 <div id="player_pets">
 </div>
-<%#=render :partial => "pet",:collection => @pets %>
-<%= link_to_function "融合","petsmix()" unless @pet_game.pets_count == 0 %>
-<%= link_to "领养",:action => :new if @pet_game.could_adopt? %>
+<%= link_to_function "融合","Pet.mix()",:id => 'player_pet_mix' %>
+<%=
+    link_to "领养",{:action => :new},:id => 'player_pet_adopt' #if @pet_game.could_adopt? 
+%>
+<div id="test"></div>
 <script>
-  Pet.init(<%=@pet_game.player_pets_json %>);
-  Pet.render();
-  function petsmix(){
-    var pets=[];
-    $(".pets:checked").each(function(){
-      pets.push($(this).val())
-    });
-    if(pets.length<2)
-    {
-      alert("只有选择两个以上宠物才能融合");
-      return
-    }
-    datas = token;
-    for(var i=0;i<pets.length;i++)
-    {
-      datas+="&ids[]="+encodeURIComponent(pets[i]);
-    }
-    $.ajax({data:datas, dataType:'script', type:'post', url:'/player_pets/mix'}); return false;
-  }
-</script>
 
+  $(document).ready(function(){
+    Pet.init(<%=@player_pets_json %>);
+    $('a.ajaxlink').ajaxRequest();
+  })
+
+</script>

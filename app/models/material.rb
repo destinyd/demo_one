@@ -8,8 +8,8 @@ class Material < Item
     unless @item
       @item = create :level => level,
         :player_id => player_id,
-        :property => Item.get_property(properties),
-        :plus => pluses ? Item.get_property(pluses) : "" ,
+        :properties => properties,
+        :pluses => pluses ? pluses : "" ,
         :system_named => self.init_name
     end
     @item

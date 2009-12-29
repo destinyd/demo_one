@@ -19,6 +19,7 @@ class PetGame
     hash = {}
     @player_pets.each do |player_pet| 
       hash[player_pet.id] = {
+        :id => player_pet.id,
         :hp => player_pet.hp, 
         :basehp => player_pet.basehp,
         :food => player_pet.food,

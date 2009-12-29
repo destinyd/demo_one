@@ -110,6 +110,15 @@ var Make = {
 var Pet = {
   init : function(player_pets_json){
     this.player_pets = player_pets_json;
+    this.render();
+    if(this.player_pets.length < 2){
+      $("#player_pet_mix").hide();
+      $("#player_pet_adopt").show();
+    }
+    else{
+      $("#player_pet_mix").show();
+      $("#player_pet_adopt").hide();
+    }
   },
   change : function(player_pet_json){
     $.each(player_pet_json,
@@ -119,26 +128,32 @@ var Pet = {
     )
   },
   render : function(){
-  var html = '';
-  $.each(this.player_pets,function(k,v){
-      html +='<div id="pet_' + k + '" style="clear:both"><div class="l" style="width:220px;height:220px"><img src="/pets/' + v["pet_id"] + '.jpg" /></div> <div class="l" style="width:600px;min-height:220px;">宠物名称:' + v["name"]  + '<br />生命值&nbsp;&nbsp;&nbsp;:'+ v["hp"] + '/' + v["basehp"] + '<br />饱腹度&nbsp;&nbsp;&nbsp;:'+ v["food"] + '/' + v["hp"] + '<br />快乐度&nbsp;&nbsp;&nbsp;:'+ v["happy"] + '/' + v["hp"]  + '<br />宠物系别:' + v["class"] +  '<br />宠物状态:<span id="msg_player_pet' + k + '"</span><br />合成选择:<input type="checkbox" value="' + k +'" class="pets"><br /><a href="/player_pets/' + k + '/feed" class="ajaxlink" ajaxmethod="POST">喂食</a><br /><a href="/player_pets/' + k + '/play" class="ajaxlink" ajaxmethod="POST">逗弄</a></div></div>'});
-  $("#player_pets").html(html);
+    var html = '';
+    $.each(this.player_pets,function(k,v){
+      html += render("player_pet",{player_pet:v})
+    });
+    $("#player_pets").html(html);
   },
-  feed : function(id){
-    $.ajax({
-      data:token ,
-      dataType:'script',
-      type:'post',
-      url:'/player_pets/' + id + '/feed'
-    });return false;
+  rerender_status: function(id){
+    $("#player_pet_" + id +"_food").html(this.player_pets[id].food.toString() + "/" + this.player_pets[id].hp.toString());
+    $("#player_pet_" + id +"_happy").html(this.player_pets[id].happy.toString() + "/" + this.player_pets[id].hp.toString());
   },
-  play : function(id){
-    $.ajax({
-      data:token ,
-      dataType:'script',
-      type:'post',
-      url:'/player_pets/' + id + '/play'
-    });return false;
+  mix : function(){
+    var pets=[];
+    $(".pets_selects:checked").each(function(){
+      pets.push($(this).val())
+    });
+    if(pets.length<2)
+    {
+      alert("只有选择两个以上宠物才能融合");
+      return
+    }
+    var datas = token;
+    for(var i=0;i<pets.length;i++)
+    {
+      datas+="&ids[]="+encodeURIComponent(pets[i]);
+    }
+    $.ajax({data:datas, dataType:'script', type:'post', url:'/player_pets/mix'}); return false;
   }
 }
 ;

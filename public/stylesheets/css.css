@@ -701,3 +701,15 @@ tr.even.gradeU td.sorting_3 {
 #player_items tr td .text{
   width: 30px;
 }
+.player_pet_img{
+  width:220px;
+  height:220px;
+}
+.player_pet_content{
+  width:600px;
+  min-height:220px;
+  height:auto;
+}
+.textarea{
+  display:none;
+}

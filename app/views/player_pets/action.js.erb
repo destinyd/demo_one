@@ -1,4 +1,4 @@
 Pet.change(<%=@player_pet_json%>);
-Pet.render();
-$('#msg_player_pet<%=params[:id]%>').html("<%=action_name%>花费了<%=@cost%>个金币");
-$('#msg_player_pet<%=params[:id]%>').effect("highlight", {}, 3000);
+Pet.rerender_status("<%=params[:id]%>");
+$('#player_pet_<%=params[:id]%>_msg').html("<%=action_name%>花费了<%=@cost%>个金币");
+$('#player_pet_<%=params[:id]%>_msg').effect("highlight", {}, 3000);
