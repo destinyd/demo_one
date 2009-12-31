@@ -36,9 +36,11 @@ class Player < ActiveRecord::Base
 
   has_many :lock_player_items, :class_name => "PlayerItem", :conditions => {:lock => true}, :dependent => :destroy
   has_many :lock_items, :class_name => "Item", :through => :unlock_player_items, :source => :item
-
   has_many :known_player_items, :class_name => "PlayerItem", :conditions => {:known => true}, :dependent => :destroy
   has_many :known_items, :class_name => "Item", :through => :known_player_items, :source => :item
+
+  has_many :player_effects
+  has_many :effect, :through => :player_effects
 
   attr_accessible :name,:user_id,:image_file, :on => :create
   validates_presence_of :name

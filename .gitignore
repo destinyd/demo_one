@@ -5,3 +5,4 @@ config/database.yml
 config/environments.rb
 tmp
 .idea
+db/schema.rb

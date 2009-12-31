@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  at: 2009-12-31 13:47:09
+  finish_time: 2009-12-31 13:47:09
+  finish: false
+  round: 1
+  player_id: 1
+  effect_id: 1
+  scene_id: 1
+  scene_type: MyString
+
+two:
+  at: 2009-12-31 13:47:09
+  finish_time: 2009-12-31 13:47:09
+  finish: false
+  round: 1
+  player_id: 1
+  effect_id: 1
+  scene_id: 1
+  scene_type: MyString
