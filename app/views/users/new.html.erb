@@ -2,26 +2,25 @@
 
 <%= error_messages_for :user %>
 <% form_for :user, :url => users_path, :html => {:multipart => true} do |f| -%>
-<p><%= label_tag '用户名(英文数字组合3-16位)' %><br/>
+<p><%= f.label :login,User.human_attribute_name(:login) %><br/>
 <%= f.text_field :login %></p>
 
-<p><%= label_tag 'email(请认真填写，因为密码找回只能通过此方式)' %><br/>
+<p><%= f.label :email,User.human_attribute_name(:email) %><br/>
 <%= f.text_field :email %></p>
 
-<p><%= label_tag :password,'密码(尽量使用8位以上英文数字组合以保证安全)' %><br/>
+<p><%= f.label :password,User.human_attribute_name(:password) %><br/>
 <%= f.password_field :password %></p>
 
-<p><%= label_tag 'password_confirmation', '请再输入一次密码' %><br/>
+<p><%= f.label :password_confirmation,User.human_attribute_name(:password_confirmation) %><br/>
 <%= f.password_field :password_confirmation %></p>
 <% f.fields_for :player_attributes do |player|  %>
-<%= label_tag 'player_name','你的角色名称'   %> <br />
+<%= f.label :name,Player.human_attribute_name(:name)  %> <br />
 <p> <%= player.text_field :name %>
 </p>
-<%= label_tag 'image_file','你的角色自定义头像（非必须）'   %> <br />
+<%= f.label :image_file,Player.human_attribute_name(:image_file)   %> <br />
 <p> <%= player.file_field :image_file %> </p>
 <% end %>
-
-<%=hidden_field_tag 'player_id',params[:id]%>
-<p><%= submit_tag '注册',:name => nil %></p>
+<%=hidden_field_tag 'player_id',params[:id] || params[:player_id] %>
+<p><%= submit_tag t('labels.button.reg'),:name => nil %></p>
 <% end -%>
-<p>以上除了特别说明，否则均为必填项</p>
+<p><%= t('labels.user.warning') %></p>

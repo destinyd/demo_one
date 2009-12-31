@@ -23,8 +23,9 @@ class User < ActiveRecord::Base
   # HACK HACK HACK -- how to do attr_accessible from here?
   # prevents a user from submitting a crafted form that bypasses activation
   # anything else you want your user to change should be added here.
-  attr_accessible :login, :email, :name, :password, :password_confirmation,:player_attributes
   accepts_nested_attributes_for :player
+
+  attr_accessible :login, :email, :name, :password, :password_confirmation,:player_attributes
 
 
 

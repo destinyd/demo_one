@@ -69,5 +69,7 @@ Rails::Initializer.run do |config|
 
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
+  config.i18n.default_locale = "zh-CN"
 end
+  I18n.load_path += Dir[File.expand_path(File.dirname(__FILE__) + '/../locale/*.{rb,yml}')]
 

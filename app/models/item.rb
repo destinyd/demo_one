@@ -10,6 +10,7 @@ class Item < ActiveRecord::Base
 
   has_many :player_items,:dependent => :destroy
   has_many :players, :through => :player_items
+  has_many :shops, :dependent => :destroy
 
   @@base_percent = 1
   @@percent_per_level = 0.2
