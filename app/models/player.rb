@@ -47,7 +47,7 @@ class Player < ActiveRecord::Base
 
   attr_accessible  :signed,:image_file, :on => :update
 
-  def buy(shop,num)
+  def buy_shop(shop,num)
     raise "wrong shop" if shop.blank?
     num = num.to_i
     raise "player_#{self.id} buy shop_#{shop.id} with a wrong number" if num < 1

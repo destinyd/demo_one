@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091224075628) do
+ActiveRecord::Schema.define(:version => 20091231054815) do
 
   create_table "adventurer_skills", :force => true do |t|
     t.integer  "adventurer_id"
@@ -56,6 +56,19 @@ ActiveRecord::Schema.define(:version => 20091224075628) do
   create_table "ddchats", :force => true do |t|
     t.string   "name",       :null => false
     t.string   "body",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "effects", :force => true do |t|
+    t.boolean  "target"
+    t.boolean  "enemy"
+    t.integer  "duration"
+    t.integer  "number"
+    t.string   "prototype"
+    t.integer  "limit"
+    t.integer  "cooldown"
+    t.integer  "player_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -157,6 +170,23 @@ ActiveRecord::Schema.define(:version => 20091224075628) do
   end
 
   add_index "picks", ["player_id"], :name => "index_picks_on_player_id"
+
+  create_table "player_effects", :force => true do |t|
+    t.datetime "at"
+    t.datetime "finish_time"
+    t.boolean  "finish"
+    t.integer  "round"
+    t.integer  "player_id"
+    t.integer  "effect_id"
+    t.integer  "scene_id"
+    t.string   "scene_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "player_effects", ["effect_id"], :name => "index_player_effects_on_effect_id"
+  add_index "player_effects", ["player_id"], :name => "index_player_effects_on_player_id"
+  add_index "player_effects", ["scene_id", "scene_type"], :name => "index_player_effects_on_scene_id_and_scene_type"
 
   create_table "player_items", :force => true do |t|
     t.integer "player_id"

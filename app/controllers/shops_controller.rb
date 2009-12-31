@@ -59,7 +59,7 @@
 
   def buy
     @shop = Shop.find(params[:id])
-    if @cost = @player.buy(@shop,params[:shop][:num])
+    if @cost = @player.buy_shop(@shop,params[:shop][:num])
       index_by_flash "成功购买#{@shop.item.name} * #{params[:shop][:num]},花费#{@cost}金币"
     else
       flash[:notice] = "你的钱不够"
