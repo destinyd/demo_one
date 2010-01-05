@@ -64,7 +64,6 @@ class Auction < ActiveRecord::Base
     player.money -= costmoney
     player.save
     self.item_type = self.item_type.capitalize
-#    debugger
     self.finish_at = sellday.days.from_now
     self.player_id = player_id
     self.save!

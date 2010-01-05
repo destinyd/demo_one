@@ -1,3 +1,4 @@
+$("#content").html('<%= escape_javascript render(:partial => controller.action_name) %>')
 <%=@content_for_layout%>
 <% if flash[:notice] %>
   $.notice("<%= h flash[:notice] %>");

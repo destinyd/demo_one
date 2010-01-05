@@ -13,10 +13,11 @@ class MakesController < ApplicationController
     @player_item = mg.make(params[:player_item_ids],params[:amounts])
     if @player_item
       @item = @player_item.item
-      render 'success'
+      flash[:notice] =  "合成成功，获得#{@item.class.human_name} '#{@item.name}'"
     else
-      render 'failed'
+      flash[:notice] = "合成失败"
     end
+    redirect_to :action => :new
   end
 
 #  def destroy

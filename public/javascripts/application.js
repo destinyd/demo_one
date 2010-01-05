@@ -24,8 +24,8 @@ var Make = {
   materials : {},
   max_amount : 50,
   now_amount : 0,
-  left_header : '<tr><th>名称</th><th>种类</th><th>等级</th><th>剩余</th><th>用量</th></tr>',
-  use_header : '<tr><th>名称</th><th>种类</th><th>等级</th><th>用量</th></tr>',
+  left_header : '<thead><tr><th>名称</th><th>种类</th><th>等级</th><th>剩余</th><th>用量</th></tr></thead><tbody>',
+  use_header : '<thead><tr><th>名称</th><th>种类</th><th>等级</th><th>用量</th></tr></thead><tbody>',
   init : function(items){
     this.materials = items;
     this.left_json = items;
@@ -48,15 +48,16 @@ var Make = {
       use_html += '<tr><td>' + v['name'] + '</td><td>' + v['class'] + '</td><td>' + v['level'] + '</td><td>' + v['amount'] + '</td></tr>';
     });
     if(use_html != ""){
-      this.table_use.html(tmp_html + use_html);
+      this.table_use.html(tmp_html + use_html + '</tbody>');
     }
   },
   render_left_list : function(){
     var tmp_html = this.left_header;
     $.each(this.left_json,function(k,v){
       tmp_html += '<tr><td>' + v['name'] + '</td><td>' + v['class'] + '</td><td>' + v['level'] + '</td><td>' + v['amount'] + '</td>';
-      tmp_html += '<input type="text" id="item' + k + '_use" class="use_amount" name="' + k +'" /></tr>';
+      tmp_html += '<td><input type="text" id="item' + k + '_use" class="use_amount" name="' + k +'" /></td></tr>';
     });
+    tmp_html += '</tbody>';
     this.table_materials.html(tmp_html);
   },
   select_material : function(player_item_id,amount){
@@ -111,6 +112,9 @@ var Pet = {
   init : function(player_pets_json){
     this.player_pets = player_pets_json;
     this.render();
+    if(this.player_pets.length == undefined){
+      this.player_pets.length = 0
+    }
     if(this.player_pets.length < 2){
       $("#player_pet_mix").hide();
       $("#player_pet_adopt").show();
@@ -165,7 +169,7 @@ var Pet = {
    if($("div.jGrowl-notification:parent",this.element).size()>1&&$("div.jGrowl-closer",this.element).size()==0&&this.defaults.closer!=false){$(this.defaults.closerTemplate).addClass("jGrowl-closer").addClass(this.defaults.theme).appendTo(this.element).animate(this.defaults.animateOpen,this.defaults.speed,this.defaults.easing).bind("click.jGrowl",function(){$(this).siblings().children("div.close").trigger("click.jGrowl");if($.isFunction(_1a.defaults.closer)){_1a.defaults.closer.apply($(this).parent()[0],[$(this).parent()[0]]);}});}},update:function(){$(this.element).find("div.jGrowl-notification:parent").each(function(){if($(this).data("jGrowl")!=undefined&&$(this).data("jGrowl").created!=undefined&&($(this).data("jGrowl").created.getTime()+$(this).data("jGrowl").life)<(new Date()).getTime()&&$(this).data("jGrowl").sticky!=true&&($(this).data("jGrowl").pause==undefined||$(this).data("jGrowl").pause!=true)){$(this).trigger("jGrowl.close");}});if(this.notifications.length>0&&(this.defaults.pool==0||$(this.element).find("div.jGrowl-notification:parent").size()<this.defaults.pool)){this.render(this.notifications.shift());}
    if($(this.element).find("div.jGrowl-notification:parent").size()<2){$(this.element).find("div.jGrowl-closer").animate(this.defaults.animateClose,this.defaults.speed,this.defaults.easing,function(){$(this).remove();});}},startup:function(e){this.element=$(e).addClass("jGrowl").append("<div class=\"jGrowl-notification\"></div>");this.interval=setInterval(function(){jQuery(e).data("jGrowl.instance").update();},this.defaults.check);if($.browser.msie&&parseInt($.browser.version)<7&&!window["XMLHttpRequest"]){$(this.element).addClass("ie6");}},shutdown:function(){$(this.element).removeClass("jGrowl").find("div.jGrowl-notification").remove();clearInterval(this.interval);}});$.jGrowl.defaults=$.fn.jGrowl.prototype.defaults;})(jQuery);
 
-$.fn.ajaxRequest=function(){$(this).unbind('click').click(function(){if($(this).attr('confirm_message')?confirm($(this).attr('confirm_message')):(($(this).attr('ajaxmethod')=='GET' || $(this).attr('ajaxmethod')== 'POST') ?true:confirm('are your sure'))){$.ajax({url:$(this).attr('href'),type:$(this).attr('ajaxmethod')||"PUT",dataType:'script'});}
+$.fn.ajaxRequest=function(){$(this).unbind('click').click(function(){if($(this).attr('confirm_message')?confirm($(this).attr('confirm_message')):(($(this).attr('ajaxmethod')=='GET' || $(this).attr('ajaxmethod')== 'POST' || undefined== $(this).attr('ajaxmethod')) ?true:confirm('are your sure'))){$.ajax({url:$(this).attr('href'),type:$(this).attr('ajaxmethod')||"GET",dataType:'script'});}
     return false;});};
 
 function ajaxComplete(){$('#content a.ajaxlink').ajaxRequest();return false}

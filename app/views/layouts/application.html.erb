@@ -35,14 +35,14 @@
         <div class="sidebar-top"></div>
         <div class="app-list">
           <ul class="border-b">
-            <li><a href="/myhome">最近状态</a></li>
-            <li><a href='/players'>我的状态</a></li>
-            <li><a href='/mails'>我的邮件</a></li>
-            <li><a href="/player_items">我的道具</a></li>
-            <li><a href="/picks">采集场</a></li>
-            <li><a href="/makes/new">合成</a></li>
-            <li><a href="/player_pets">宠物世界</a></li>
-            <li><a href="/shops">商店街</a></li>
+            <li><a href="/myhome" class="ajaxlin">最近状态</a></li>
+            <li><a href='/players' class="ajaxlin">我的状态</a></li>
+            <li><a href='/mails' class="ajaxlin">我的邮件</a></li>
+            <li><a href="/player_items" class="ajaxlin">我的道具</a></li>
+            <li><a href="/picks" class="ajaxlin">采集场</a></li>
+            <li><a href="/makes/new" class="ajaxlin">合成</a></li>
+            <li><a href="/player_pets" class="ajaxlin">宠物世界</a></li>
+            <li><a href="/shops" class="ajaxlin">商店街</a></li>
             <% current_player.plugins.each do |plugin|%>
 
               <%if plugin.url!="#"%>
@@ -56,8 +56,8 @@
                 </li>
               <%end%>
             <%end if current_player and false%>
-            <li><a href="/adventure/adventures">冒险世界</a></li>
-            <li><a href='/feedbacks'>留言板</a></li>
+            <li><a href="/adventure/adventures" class="ajaxlin">冒险世界</a></li>
+            <li><a href='/feedbacks' class="ajaxlin">留言板</a></li>
           </ul>
           <!--
           <ul class="activelist">

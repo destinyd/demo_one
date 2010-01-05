@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091231054815) do
+ActiveRecord::Schema.define(:version => 20091231114533) do
 
   create_table "adventurer_skills", :force => true do |t|
     t.integer  "adventurer_id"
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20091231054815) do
     t.string   "scene_type"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "total",       :default => 0
   end
 
   add_index "player_effects", ["effect_id"], :name => "index_player_effects_on_effect_id"

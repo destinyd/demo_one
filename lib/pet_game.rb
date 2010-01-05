@@ -5,6 +5,7 @@ class PetGame
   @@hp_percent_per_hour = 0.01
   @@init_food_percent = 0.8
   @@init_happy_percent = 0.5
+  @@max_multiple = 2
 
   attr_reader :pets_count
 
@@ -150,8 +151,8 @@ class PetGame
   end
 
   def run_away(player_pet)
-    player_pet.destroy
     @player_pets.delete player_pet
+    player_pet.destroy
     @pets_count -= 1
   end
 
@@ -162,6 +163,8 @@ class PetGame
     grow_point = (player_pet.hp * @@percent_per_hour * grow_time).round
     grow_hp_percent = (1 + @@hp_percent_per_hour) ** grow_time
     player_pet.hp = (player_pet.hp * grow_hp_percent).to_i
+    max_hp = player_pet.basehp * @@max_multiple
+    player_pet.hp = player_pet.basehp * max_hp if player_pet.hp > max_hp
     player_pet.food -= grow_point
     player_pet.happy -= grow_point
     return hungry(player_pet) if player_pet.food <= 0
@@ -176,13 +179,13 @@ class PetGame
   def hungry(player_pet)
     name = player_pet.name
     run_away(player_pet)
-    "你的#{name}被饿死了"
+    @player.do_now "你的#{name}被饿死了"
   end
 
   def unhappy(player_pet)
     name = player_pet.name
     run_away(player_pet)
-    "你的#{name}十分不开心的跑掉了"
+    @player.do_now "你的#{name}十分不开心的跑掉了"
   end
 
   def action_cost(player_pet)
