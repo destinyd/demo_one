@@ -112,10 +112,7 @@ var Pet = {
   init : function(player_pets_json){
     this.player_pets = player_pets_json;
     this.render();
-    if(this.player_pets.length == undefined){
-      this.player_pets.length = 0
-    }
-    if(this.player_pets.length < 2){
+    if(this.total(this.player_pets) < 2){
       $("#player_pet_mix").hide();
       $("#player_pet_adopt").show();
     }
@@ -158,6 +155,15 @@ var Pet = {
       datas+="&ids[]="+encodeURIComponent(pets[i]);
     }
     $.ajax({data:datas, dataType:'script', type:'post', url:'/player_pets/mix'}); return false;
+  },
+  total : function(json){
+  var prop;
+  var propCount = 0;
+  
+  for (prop in json) {
+      propCount++;
+    }
+  return propCount;
   }
 }
 ;
