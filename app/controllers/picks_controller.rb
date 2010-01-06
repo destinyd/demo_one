@@ -9,7 +9,7 @@ class PicksController < ApplicationController
   def edit
     @subtitle="改造采集场"
     @pick_type = @pick_game.mtype.human_name
-    @mtype = ::MATERIAL_TYPES_TO_IDS.clone.delete_if{|k,v| v == @pick.ctype }
+    @mtype = @pick_game.material_type_names_to_ids.delete_if{|k,v| v == @pick.ctype }
     @level_up_money = @pick_game.level_up_money
   end
 
@@ -38,7 +38,7 @@ class PicksController < ApplicationController
   def new
     @subtitle="建立采集场"
     @pick = @player.build_pick
-    @mtype = MATERIAL_TYPES_TO_IDS
+    @mtype = PickGame.material_type_names_to_ids
   end
   
   def create
@@ -47,7 +47,7 @@ class PicksController < ApplicationController
     if @pick.save
       index_by_flash "你的采集场已经建立"
     else
-      @mtype = MATERIAL_TYPES_TO_IDS
+      @mtype = @pick_game.material_type_names_to_ids
       render :action => :new
     end
   end

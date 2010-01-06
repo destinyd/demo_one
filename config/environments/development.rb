@@ -17,8 +17,4 @@ config.action_controller.perform_caching             = false
 config.action_mailer.raise_delivery_errors = false
 require 'ruby-debug'
 MATERIAL_TYPES = ["Ore","Wood","Leather"]
-MATERIAL_TYPES_TO_IDS = {}
-MATERIAL_TYPES.each_with_index do |v,i|
-  MATERIAL_TYPES_TO_IDS[v] = i
-end
 EQUIP_TYPES = ["Sword","Clothes"]

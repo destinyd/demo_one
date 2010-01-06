@@ -8,7 +8,7 @@
   <% for shop in @shops %>
     <tr>
       <td><%=h shop.item.name %></td>
-      <td><%=h shop.class.human_name  %></td>
+      <td><%=h shop.item.class.human_name  %></td>
       <td><%=h shop.num %></td>
       <td><%=h shop.price %></td>
       <td><%= link_to '买', shop %></td>

@@ -21,8 +21,4 @@ config.action_controller.allow_forgery_protection    = false
 # ActionMailer::Base.deliveries array.
 config.action_mailer.delivery_method = :test
 MATERIAL_TYPES = ["Ore","Wood","Leather"]
-MATERIAL_TYPES_TO_IDS = {}
-MATERIAL_TYPES.each_with_index do |v,i|
-  MATERIAL_TYPES_TO_IDS[v] = i
-end
 EQUIP_TYPES = ["Sword","Clothes"]

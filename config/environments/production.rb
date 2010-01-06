@@ -20,8 +20,4 @@ config.action_controller.perform_caching             = true
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
 MATERIAL_TYPES = ["Ore","Wood","Leather"]
-MATERIAL_TYPES_TO_IDS = {}
-MATERIAL_TYPES.each_with_index do |v,i|
-  MATERIAL_TYPES_TO_IDS[v] = i
-end
 EQUIP_TYPES = ["Sword","Clothes"]

@@ -2,7 +2,6 @@ nbproject
 log/*
 old*
 config/database.yml
-config/environments.rb
 tmp
 .idea
-db/schema.rb
+config/environment.rb

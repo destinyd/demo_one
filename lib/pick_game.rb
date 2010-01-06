@@ -11,6 +11,11 @@ class PickGame
   @@level_coefficient = 20
   @@range_for_new = 0.01
 
+  @@material_type_names_to_ids = {}
+  MATERIAL_TYPES.each_with_index do |v,i|
+    @@material_type_names_to_ids[v.constantize.human_name] = i
+  end
+
   def initialize(pick)
     raise "pick cannot be empty" if pick.blank?
     @pick = pick
@@ -43,12 +48,20 @@ class PickGame
 
   def change_pick_type(to_type)
     @to_type  = to_type.to_i
-    if MATERIAL_TYPES_TO_IDS.has_value?(@to_type)
+    if @@material_type_names_to_ids.has_value?(@to_type)
       @pick.ctype = @to_type
       @pick.save!
     else
       raise "wrong pick type"
     end
+  end
+
+  def self.material_type_names_to_ids
+    @@material_type_names_to_ids.clone
+  end
+
+  def material_type_names_to_ids
+    @@material_type_names_to_ids.clone
   end
 
   private
