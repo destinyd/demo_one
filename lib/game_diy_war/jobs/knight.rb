@@ -93,7 +93,8 @@ module GameDiyWar
         unless enemy.blank?
           mul         = 2
           damage      = get_damage(self, mul)
-          e = enemy[rand(enemy.count)]
+          #e = enemy[rand(enemy.count)]
+          e = enemy.rand
           e.hp -=  damage
           Output.attack(damage, @name,e.name)
         end

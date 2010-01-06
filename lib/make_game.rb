@@ -93,7 +93,7 @@ class MakeGame
   end
 
   def same_count
-    raise "count of params is not same" unless @player_item_ids.count == @player_items.count and @player_item_ids.count == @amounts.count
+    raise "count of params is not same" unless @player_item_ids.length == @player_items.length and @player_item_ids.length == @amounts.length
   end
 
   def player_items(player_item_ids)
@@ -101,8 +101,9 @@ class MakeGame
   end
 
   def rand_new_item_type
-    new_item_type = @@new_item_type.map{|k,v| k}
-    new_item_type[rand(new_item_type.count)]
+#    new_item_type = @@new_item_type.map{|k,v| k}
+ #   new_item_type[rand(new_item_type.length)]
+    @@new_item_type.keys.rand
   end
 
   def new_item_type
@@ -116,14 +117,17 @@ class MakeGame
     @to_type = {}
     @@forms_to_new.each{|k,v| @to_type[k]=v if item_types.any?{|item_type| k.include? item_type} }
     index = 0
-    if @to_type.count == 1
-      @to_type.each{|k,v| return v}
-    elsif @to_type.count > 1
-      rand_num = rand(@to_type.count)
-      @to_type.each{|k,v| return v if index == rand_num; index += 1}
+    if @to_type.length >= 1
+#    if @to_type.length == 1
+#      @to_type.each{|k,v| return v}
+#    elsif @to_type.length > 1
+      #rand_num = rand(@to_type.count)
+      #@to_type.each{|k,v| return v if index == rand_num; index += 1}
+      @to_type.values.rand
     else
-      rand_num = rand(@@forms_to_new.count)
-      @@forms_to_new.each{|k,v| return v if index == rand_num; index += 1}
+      #rand_num = rand(@@forms_to_new.length)
+      #@@forms_to_new.each{|k,v| return v if index == rand_num; index += 1}
+      @@forms_to_new.values.rand
     end
   end
 

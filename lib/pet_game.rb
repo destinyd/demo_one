@@ -12,7 +12,7 @@ class PetGame
   def initialize(player)
     @player = player
     @player_pets = player.player_pets
-    @pets_count = @player_pets.count
+    @pets_count = @player_pets.length
     all_grow
   end
 
@@ -96,8 +96,8 @@ class PetGame
       player_pets.push find_player_pet(player_pet_id)
     end
     player_pets = player_pets.compact
-    raise "#{@player.name} has no these pets" unless has_player_pets?(player_pets) and player_pet_ids.count == player_pets.count
-    raise "mix must greater or equal 2 pets" if player_pets.count < 2
+    raise "#{@player.name} has no these pets" unless has_player_pets?(player_pets) and player_pet_ids.length == player_pets.length
+    raise "mix must greater or equal 2 pets" if player_pets.length < 2
     race = []
     total_hp = 0
     player_pets.each do |player_pet|
@@ -106,8 +106,8 @@ class PetGame
       player_pet.destroy
       @player_pets.delete player_pet
     end
-    @pets_count -= player_pets.count
-    hp = (total_hp / player_pets.count).round
+    @pets_count -= player_pets.length
+    hp = (total_hp / player_pets.length).round
     race = race.uniq.rand
     pet = race.mix(@player.id,hp)
     get_pet(pet)

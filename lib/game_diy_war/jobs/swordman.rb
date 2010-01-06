@@ -82,13 +82,13 @@ module GameDiyWar
         damage      = get_damage(self, mul)
         unless enemy.blank?
           if rand() >=0.5 #一半机能 使用机能  攻击次数同技能
-            skill = skills[rand(skills.count)]
+            skill = skills.rand#[rand(skills.count)]
             damage  = damage  * skill[1]
             e = enemy[rand(enemy.count)]
             e.hp -=  damage
             Output.use_skill(damage, skill[0], @name,e.name)
           else #否则为普通攻击
-            e = enemy[rand(enemy.count)]
+            e = enemy.rand#[rand(enemy.count)]
             e.hp -=  damage
           end
         end
