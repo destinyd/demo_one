@@ -42,10 +42,18 @@ class Player < ActiveRecord::Base
   has_many :player_effects
   has_many :effect, :through => :player_effects
 
+  has_many :player_signs, :class_name => "PlayerEffect",:conditions => {:scene_id => nil , :scene_type => nil}
+  has_many :signs, :through => :player_signs, :class_name => "Effect",:source => :effect
+
   attr_accessible :name,:user_id,:image_file, :on => :create
   validates_presence_of :name
 
   attr_accessible  :signed,:image_file, :on => :update
+
+
+  def sign()
+
+  end
 
   def buy_shop(shop,num)
     raise "wrong shop" if shop.blank?
