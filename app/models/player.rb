@@ -42,8 +42,9 @@ class Player < ActiveRecord::Base
   has_many :player_effects
   has_many :effect, :through => :player_effects
 
-  has_many :player_signs, :class_name => "PlayerEffect",:conditions => {:scene_id => nil , :scene_type => nil}
-  has_many :signs, :through => :player_signs, :class_name => "Effect",:source => :effect
+  has_many :player_signs, :class_name => "PlayerEffect",:conditions => "player_effects.scene_id is NULL and player_effects.scene_type is NULL and player_effects.finish is NULL", :select => "player_effects.player_id,player_effects.effect_id,player_effects.finish,player_effects.finish_time,player_effects.id"
+
+  has_many :signs, :through => :player_signs, :class_name => "Effect",:source => :effect, :select => "effects.prototype"
 
   attr_accessible :name,:user_id,:image_file, :on => :create
   validates_presence_of :name
@@ -51,9 +52,7 @@ class Player < ActiveRecord::Base
   attr_accessible  :signed,:image_file, :on => :update
 
 
-  def sign()
-
-  end
+  include SignEngine
 
   def buy_shop(shop,num)
     raise "wrong shop" if shop.blank?

@@ -9,8 +9,7 @@ class Material < Item
       @item = create :level => level,
         :player_id => player_id,
         :properties => properties,
-        :pluses => pluses ? pluses : "" ,
-        :system_named => self.init_name
+        :pluses => pluses ? pluses : ""
     end
     @item
   end
