@@ -16,13 +16,13 @@ class Pet < ActiveRecord::Base
   has_many :players, :through => :player_pets
   belongs_to :player
   
-  attr_accessible :system_named, :hp, :type, :player_id , :on => :create
+  attr_accessible :hp, :type, :player_id , :on => :create
   attr_accessible  :name, :on => :update
   @@level_hp = 20 # 常量
 
   def self.mix(player_id,hp)
     pet = self.hp(hp)
-    pet = create(:hp => hp, :player_id => player_id, :system_named => init_name) unless pet
+    pet = create(:hp => hp, :player_id => player_id) unless pet
     pet
   end
 
@@ -32,15 +32,4 @@ class Pet < ActiveRecord::Base
     find_by_hp thp
   end
 
-  def material_type
-    @@material_type
-  end
-  protected
-  def self.init_name
-    "#{self.human_name}#{self.time_string}"
-  end
-
-  def self.time_string
-    Time.now.strftime("%Y%m%d%H%M%S") + sprintf("%04d",rand(10000))
-  end
 end

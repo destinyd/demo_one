@@ -30,7 +30,7 @@ class Item < ActiveRecord::Base
     properties[:base] = base
     hash = {:level => level, :property => get_property(properties), :plus => get_property(pluses), :player_id => player_id}
     item = first :conditions => hash
-    item.blank? ? create(hash.merge({:system_named => init_name})) : item
+    item.blank? ? create(hash) : item
   end
 
   def property_detail
@@ -97,14 +97,6 @@ class Item < ActiveRecord::Base
   def properties_to_property
     self.property = Item.get_property(self.properties)
     self.plus = Item.get_property(self.pluses)
-  end
-
-  def self.init_name
-    "#{self.human_name}#{self.time_string}"
-  end
-
-  def self.time_string
-    Time.now.strftime("%Y%m%d%H%M%S") + sprintf("%04d",rand(10000))
   end
 
   #  class Equip < ActiveRecord::Base

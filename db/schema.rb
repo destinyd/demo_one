@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20091231114533) do
+ActiveRecord::Schema.define(:version => 20100108131624) do
 
   create_table "adventurer_skills", :force => true do |t|
     t.integer  "adventurer_id"
@@ -71,6 +71,8 @@ ActiveRecord::Schema.define(:version => 20091231114533) do
     t.integer  "player_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "type"
+    t.integer  "hit_rate"
   end
 
   create_table "feedbacks", :force => true do |t|

@@ -13,6 +13,7 @@ module ActiveRecord #:nodoc:
           after_destroy :destroy_name
           include ActiveRecord::Acts::Nameable::InstanceMethods
           extend ActiveRecord::Acts::Nameable::SingletonMethods
+          before_validation_on_create :give_random_name
         end
       end
 
@@ -27,64 +28,57 @@ module ActiveRecord #:nodoc:
         end
 
         def name
-          make_sure_read_name
-          return @name.name if @name
+          name_instance.name
         end
 
         def name=(value)
-          make_sure_read_name
-          unless @name.isnamed
-            @name.name = value
-            @name.isnamed = true
-            return @name.name
+          unless name_instance.isnamed
+            name_instance.name = value
+            name_instance.isnamed = true
+            name_instance.name
           end
-          nil
         end
 
         def system_named=(value)
-          make_sure_read_name
-          @name.name=value
-          @name.isnamed = false
-          @name.player_id = nil
+          name_instance.name=value
+          name_instance.player_id = nil
         end
 
         def isnamed
-          make_sure_read_name
-          @name.isnamed
+          name_instance.isnamed
         end
 
         def who_named
-          make_sure_read_name
-          @name.player_id
+          name_instance.player
         end
 
         def who_named=(value)
-          make_sure_read_name
-          @name.player_id = value
+          if value.class = Fixnum
+            name_instance.player_id = value
+          else
+            name_instance.player = value
+          end
         end
         
         def nameable=(value)
-          make_sure_read_name
-          @name.nameable_id   =value.id
-          @name.nameable_type =value.class.to_s
+          name_instance.nameable_id   = value.id
+          name_instance.nameable_type = value.class.to_s
         end
 
         def nameable
-          make_sure_read_name
-          @name
+          name_instance
         end
 
         def name_verify
-          make_sure_read_name
-          self.nameable=self if @name.nameable_type.blank?
-          (self.errors.add_on_blank(:name); return false) unless @name
-          (self.errors.add(:name,"name valid");return false) unless @name.valid?
+          self.nameable=self if name_instance.nameable_type.blank?
+          (self.errors.add_on_blank(:name); return false) unless name_instance
+          (self.errors.add(:name,"name valid");return false) unless name_instance.valid?
           true
         end
 
         def save_name
-          self.nameable=self if @name.nameable_id.blank?
-          @name.save if @name.changed?
+          self.nameable=self if name_instance.nameable_id.blank?
+          name_instance.save if name_instance.changed? and name_instance.valid?
         end
 
         def destroy_name
@@ -92,6 +86,17 @@ module ActiveRecord #:nodoc:
         end
 
         protected
+        def random_name
+          "#{self.class.human_name}#{self.time_string}"
+        end
+
+        def time_string
+          Time.now.strftime("%Y%m%d%H%M%S") + sprintf("%04d",rand(10000))
+        end
+        def give_random_name
+          self.system_named = random_name if self.name.blank?
+        end
+
         def is_creator?(player_id)
           self.player_id == player_id
         end
@@ -109,6 +114,12 @@ module ActiveRecord #:nodoc:
         def make_sure_read_name
           @name=find_by_self unless @name
           @name = Name.new unless @name
+        end
+        def name_instance
+          return @name if @name
+          @name=find_by_self unless @name
+          @name = Name.new unless @name
+          @name
         end
       end
     end
