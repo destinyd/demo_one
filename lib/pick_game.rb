@@ -73,7 +73,7 @@ class PickGame
       @pick_result[m] ?
         @pick_result[m] += real_amount : @pick_result[m] = real_amount
     end
-    #    save_time#记录时间 注释掉意味着不限制
+    save_time unless RAILS_ENV == 'development'#记录时间 注释掉意味着不限制
     player_get_material(@pick_result) unless @pick_result.blank?
     @pick_result
   end
